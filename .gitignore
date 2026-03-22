@@ -1,0 +1,23 @@
+context.md
+agents
+
+# dependências
+**/node_modules/
+**/apps/api/node_modules/
+
+# builds
+**/dist/
+**/apps/api/dist/
+
+# variáveis de ambiente
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+**/.env.test
+
+**/apps/api/.env
+**/apps/api/.env.local
+**/apps/api/.env.development
+**/apps/api/.env.production
+**/apps/api/.env.test
