@@ -1,0 +1,150 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "back": "Back",
+    "next": "Next",
+    "finish": "Finish",
+    "or": "or"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back!",
+      "subtitle": "Continue your story journey",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "Your password",
+      "loginButton": "Sign In",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Sign Up",
+      "forgotPassword": "Forgot password?",
+      "orContinueWith": "or continue with",
+      "google": "Continue with Google",
+      "apple": "Continue with Apple"
+    },
+    "createAccount": {
+      "title": "Create Account",
+      "subtitle": "Start your story adventure",
+      "step1Title": "Hello!",
+      "step1Subtitle": "Let's create your account",
+      "step1Button": "Get Started",
+      "step2Title": "Your email",
+      "step2Subtitle": "We'll use it to sign in",
+      "emailPlaceholder": "your@email.com",
+      "step2Button": "Continue",
+      "step3Title": "Create a password",
+      "step3Subtitle": "Keep your account safe",
+      "passwordPlaceholder": "At least 8 characters",
+      "confirmPasswordPlaceholder": "Repeat password",
+      "step3Button": "Create Account",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign In",
+      "namePlaceholder": "Your full name"
+    }
+  },
+  "home": {
+    "greeting": "Hello,",
+    "guest": "Explorer",
+    "featured": "Featured",
+    "recommended": "Recommended for You",
+    "continueReading": "Continue Reading",
+    "newStories": "New Stories",
+    "seeAll": "See all",
+    "themes": {
+      "all": "All",
+      "adventure": "Adventure",
+      "fantasy": "Fantasy",
+      "science": "Science",
+      "nature": "Nature",
+      "mystery": "Mystery",
+      "fables": "Fables"
+    },
+    "themeSection": {
+      "adventure": "Adventure Stories",
+      "fantasy": "Fantasy World",
+      "science": "Science & Discovery",
+      "nature": "Nature Tales",
+      "mystery": "Little Mysteries",
+      "fables": "Classic Fables"
+    }
+  },
+  "story": {
+    "detail": {
+      "start": "Start Story",
+      "continue": "Continue where you left off",
+      "theme": "Theme",
+      "characters": "Characters",
+      "ageRange": "Ages",
+      "pages": "pages",
+      "language": "Language",
+      "about": "About this story",
+      "download": "Download",
+      "downloading": "Downloading...",
+      "downloaded": "Downloaded"
+    },
+    "read": {
+      "page": "Page",
+      "choose": "What happens next?",
+      "theEnd": "The End!",
+      "endSubtitle": "You reached an ending!",
+      "playAgain": "Read Again",
+      "goHome": "Back to Home",
+      "option": "Option"
+    }
+  },
+  "downloads": {
+    "title": "Downloads",
+    "subtitle": "Read offline, anytime",
+    "empty": "No downloads yet",
+    "emptySubtitle": "Download stories to read without internet",
+    "downloading": "Downloading...",
+    "downloaded": "Available offline",
+    "remove": "Remove",
+    "size": "MB"
+  },
+  "profile": {
+    "title": "Profile",
+    "editProfile": "Edit Profile",
+    "name": "Name",
+    "email": "Email",
+    "language": "Language",
+    "subscription": "Subscription",
+    "free": "Free Plan",
+    "premium": "Premium",
+    "logout": "Sign Out",
+    "settings": "Settings",
+    "children": "Child Profiles",
+    "addChild": "Add Child",
+    "readingStats": "Reading Stats",
+    "storiesRead": "Stories Read",
+    "totalTime": "Total Time",
+    "favorites": "Favorites",
+    "saveChanges": "Save Changes"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search stories...",
+    "noResults": "No stories found",
+    "noResultsSubtitle": "Try a different keyword",
+    "popular": "Popular Searches",
+    "results": "results"
+  },
+  "navigation": {
+    "home": "Home",
+    "search": "Search",
+    "downloads": "Downloads",
+    "profile": "Profile"
+  },
+  "language": {
+    "select": "Select Language",
+    "en": "English",
+    "es": "Español",
+    "ptBR": "Português (BR)",
+    "changeLanguage": "Change Language"
+  }
+}
