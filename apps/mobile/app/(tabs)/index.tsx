@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -21,20 +22,22 @@ import {
   ThemeChip,
 } from '@/components/shared/ListComponents';
 import {
-  MOCK_STORIES,
   STORY_THEMES,
   THEME_EMOJIS,
-  getFeaturedStory,
-  getRecommendedStories,
-  getStoriesByTheme,
   type StoryTheme,
+  type Story,
 } from '@/data/stories';
+import {
+  fetchAllStories,
+  fetchFeaturedStory,
+  fetchRecommendedStories,
+  fetchStoriesByTheme,
+} from '@/services/storiesService';
 
 const { width } = Dimensions.get('window');
 
-function FeaturedCard() {
+function FeaturedCard({ story }: { story: Story }) {
   const { t, i18n } = useTranslation();
-  const story = getFeaturedStory();
 
   const title =
     i18n.language === 'es'
@@ -56,11 +59,10 @@ function FeaturedCard() {
       activeOpacity={0.9}
       onPress={() => router.push(`/story/${story.id}`)}
     >
-      <LinearGradient
-        colors={[...story.gradientColors, Colors.background]}
-        start={{ x: 0.2, y: 0 }}
-        end={{ x: 0.8, y: 1 }}
+      <Image
+        source={{ uri: story.coverImage }}
         style={StyleSheet.absoluteFill}
+        contentFit="cover"
       />
 
       {/* Big emoji illustration */}
@@ -95,11 +97,24 @@ export default function HomeScreen() {
   const { t } = useTranslation();
   const { user } = useAuthStore();
   const [selectedTheme, setSelectedTheme] = useState<StoryTheme | 'all'>('all');
+  const [allStories, setAllStories] = useState<Story[]>([]);
+  const [featuredStory, setFeaturedStory] = useState<Story | null>(null);
+  const [recommended, setRecommended] = useState<Story[]>([]);
+  const [storiesByTheme, setStoriesByTheme] = useState<Story[]>([]);
 
-  const displayedStories =
-    selectedTheme === 'all' ? MOCK_STORIES : getStoriesByTheme(selectedTheme);
+  useEffect(() => {
+    fetchFeaturedStory().then(setFeaturedStory);
+    fetchRecommendedStories().then(setRecommended);
+    fetchAllStories().then(setAllStories);
+  }, []);
 
-  const recommended = getRecommendedStories();
+  useEffect(() => {
+    if (selectedTheme !== 'all') {
+      fetchStoriesByTheme(selectedTheme).then(setStoriesByTheme);
+    }
+  }, [selectedTheme]);
+
+  const displayedStories = selectedTheme === 'all' ? allStories : storiesByTheme;
 
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
@@ -151,9 +166,9 @@ export default function HomeScreen() {
         </ScrollView>
 
         {/* Featured card */}
-        {selectedTheme === 'all' && (
+        {selectedTheme === 'all' && featuredStory && (
           <View style={styles.featuredSection}>
-            <FeaturedCard />
+            <FeaturedCard story={featuredStory} />
           </View>
         )}
 
@@ -188,7 +203,7 @@ export default function HomeScreen() {
           </View>
         ) : (
           STORY_THEMES.map((theme) => {
-            const stories = getStoriesByTheme(theme);
+            const stories = allStories.filter((s) => s.theme === theme);
             if (!stories.length) return null;
             return (
               <View key={theme} style={styles.section}>

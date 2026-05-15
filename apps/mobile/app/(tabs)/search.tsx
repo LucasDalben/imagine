@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,12 +8,14 @@ import {
   TextInput,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Typography, Spacing, BorderRadius } from '@/theme';
-import { MOCK_STORIES, STORY_THEMES, THEME_EMOJIS, type StoryTheme } from '@/data/stories';
+import { STORY_THEMES, THEME_EMOJIS, type StoryTheme, type Story } from '@/data/stories';
+import { fetchAllStories } from '@/services/storiesService';
 import { ThemeChip } from '@/components/shared/ListComponents';
 
 const POPULAR_SEARCHES = ['dragon', 'adventure', 'magic', 'space', 'forest', 'mystery'];
@@ -22,10 +24,15 @@ export default function SearchScreen() {
   const { t, i18n } = useTranslation();
   const [query, setQuery] = useState('');
   const [activeTheme, setActiveTheme] = useState<StoryTheme | 'all'>('all');
+  const [allStories, setAllStories] = useState<Story[]>([]);
+
+  useEffect(() => {
+    fetchAllStories().then(setAllStories);
+  }, []);
 
   const results = useMemo(() => {
     const q = query.toLowerCase().trim();
-    return MOCK_STORIES.filter((story) => {
+    return allStories.filter((story) => {
       const matchesTheme = activeTheme === 'all' || story.theme === activeTheme;
       if (!q) return matchesTheme;
 
@@ -47,7 +54,7 @@ export default function SearchScreen() {
 
       return matchesTheme && matchesQuery;
     });
-  }, [query, activeTheme, i18n.language]);
+  }, [query, activeTheme, i18n.language, allStories]);
 
   return (
     <SafeAreaView style={styles.safe}>
@@ -144,9 +151,10 @@ export default function SearchScreen() {
                     onPress={() => router.push(`/story/${story.id}`)}
                   >
                     <View style={styles.resultThumb}>
-                      <LinearGradient
-                        colors={story.gradientColors}
+                      <Image
+                        source={{ uri: story.coverImage }}
                         style={StyleSheet.absoluteFill}
+                        contentFit="cover"
                       />
                       <Text style={styles.resultThumbEmoji}>{story.emoji}</Text>
                     </View>

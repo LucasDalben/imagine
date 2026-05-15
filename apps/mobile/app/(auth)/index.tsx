@@ -10,6 +10,7 @@ import {
   Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'react-native';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -64,15 +65,11 @@ export default function LoginScreen() {
         >
           {/* Logo */}
           <View style={styles.logoArea}>
-            <View style={styles.logoCircle}>
-              <LinearGradient
-                colors={[Colors.primary, Colors.accentDark]}
-                style={StyleSheet.absoluteFill}
-              />
-              <Text style={styles.logoEmoji}>📚</Text>
-            </View>
-            <Text style={styles.appName}>imagine</Text>
-            <View style={styles.taglineDot} />
+            <Image
+              source={require('@/assets/imagine_logo.png')}
+              style={styles.logoImage}
+              resizeMode="contain"
+            />
           </View>
 
           {/* Card */}
@@ -165,28 +162,9 @@ const styles = StyleSheet.create({
     paddingBottom: Spacing.xl,
   },
   logoArea: { alignItems: 'center', marginBottom: Spacing.xl },
-  logoCircle: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    overflow: 'hidden',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: Spacing.sm,
-  },
-  logoEmoji: { fontSize: 42 },
-  appName: {
-    fontSize: 36,
-    fontWeight: '800',
-    color: Colors.textPrimary,
-    letterSpacing: 2,
-  },
-  taglineDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: Colors.primary,
-    marginTop: 6,
+  logoImage: {
+    width: 400,
+    height: 160,
   },
   card: {
     backgroundColor: Colors.surface,

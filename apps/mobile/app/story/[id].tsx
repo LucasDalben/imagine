@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,12 +9,14 @@ import {
   Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'expo-image';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Typography, Spacing, BorderRadius } from '@/theme';
-import { getStoryById, THEME_EMOJIS } from '@/data/stories';
+import { THEME_EMOJIS, type Story } from '@/data/stories';
+import { fetchStoryById } from '@/services/storiesService';
 import { useReadingStore } from '@/stores/readingStore';
 import { Button } from '@/components/shared/Button';
 
@@ -26,8 +28,23 @@ export default function StoryDetailScreen() {
   const { getProgress, downloadStory, removeDownload, isDownloaded, isFavorite, toggleFavorite } =
     useReadingStore();
   const [downloading, setDownloading] = useState(false);
+  const [story, setStory] = useState<Story | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
 
-  const story = getStoryById(id ?? '');
+  useEffect(() => {
+    fetchStoryById(id ?? '').then((s) => {
+      setStory(s);
+      setLoading(false);
+    });
+  }, [id]);
+
+  if (loading) {
+    return (
+      <View style={styles.notFound}>
+        <Text style={Typography.h3}>Loading...</Text>
+      </View>
+    );
+  }
 
   if (!story) {
     return (
@@ -81,11 +98,10 @@ export default function StoryDetailScreen() {
     <View style={styles.container}>
       {/* Hero image area — ~55% of screen */}
       <View style={styles.heroArea}>
-        <LinearGradient
-          colors={[...story.gradientColors, Colors.background]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
+        <Image
+          source={{ uri: story.coverImage }}
           style={StyleSheet.absoluteFill}
+          contentFit="cover"
         />
         <Text style={styles.heroEmoji}>{story.emoji}</Text>
 

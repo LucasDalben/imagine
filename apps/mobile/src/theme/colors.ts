@@ -1,64 +1,107 @@
 export const Colors = {
-  // Primary palette
-  red: {
-    50: '#FFEBEE',
-    100: '#FFCDD2',
-    300: '#E57373',
-    500: '#F44336',
-    600: '#E53935',
-    700: '#D32F2F',
-    800: '#C62828',
-    900: '#B71C1C',
+  // =========================
+  // GREEN PRIMARY PALETTE
+  // =========================
+  green: {
+    50: '#F0FDF4',
+    100: '#DCFCE7',
+    200: '#BBF7D0',
+    300: '#86EFAC',
+    400: '#4ADE80',
+    500: '#22C55E',
+    600: '#16A34A',
+    700: '#15803D',
+    800: '#166534',
+    900: '#14532D',
   },
+
+  // =========================
+  // BLUE SUPPORT PALETTE
+  // =========================
   blue: {
-    50: '#E3F2FD',
-    100: '#BBDEFB',
-    200: '#90CAF9',
-    300: '#64B5F6',
-    400: '#42A5F5',
-    500: '#2196F3',
-    600: '#1E88E5',
-    700: '#1565C0',
-    800: '#0D47A1',
-    900: '#0D1B3E',
+    50: '#EFF6FF',
+    100: '#DBEAFE',
+    200: '#BFDBFE',
+    300: '#93C5FD',
+    400: '#60A5FA',
+    500: '#3B82F6',
+    600: '#2563EB',
+    700: '#1D4ED8',
+    800: '#1E40AF',
+    900: '#172554',
   },
 
-  // Semantic
-  background: '#0D1B3E',
-  surface: '#1A2D5A',
-  surfaceElevated: '#243B6E',
-  surfaceHighlight: '#2E4C85',
+  // =========================
+  // YELLOW HIGHLIGHTS
+  // =========================
+  yellow: {
+    100: '#FEF9C3',
+    300: '#FDE047',
+    500: '#FACC15',
+    700: '#CA8A04',
+  },
 
-  primary: '#E53935',
-  primaryDark: '#C62828',
-  primaryLight: '#EF5350',
+  // =========================
+  // BACKGROUNDS
+  // =========================
+  background: '#081C15',
+  surface: '#0F2A20',
+  surfaceElevated: '#163828',
+  surfaceHighlight: '#1F4A36',
 
-  accent: '#42A5F5',
-  accentDark: '#1565C0',
+  // =========================
+  // PRIMARY BRAND
+  // =========================
+  primary: '#22C55E',
+  primaryDark: '#15803D',
+  primaryLight: '#4ADE80',
 
-  // Text
+  // Accent / interactive
+  accent: '#3B82F6',
+  accentDark: '#1D4ED8',
+
+  // Highlight / CTA secondary
+  highlight: '#FACC15',
+
+  // =========================
+  // TEXT
+  // =========================
   textPrimary: '#FFFFFF',
-  textSecondary: '#90CAF9',
-  textMuted: '#5C7DB5',
-  textDisabled: '#3A5080',
+  textSecondary: '#D1FAE5',
+  textMuted: '#A7CDB8',
+  textDisabled: '#6B8F7A',
 
-  // Status
-  success: '#4CAF50',
-  warning: '#FFB300',
-  error: '#EF5350',
+  // Text on bright buttons/cards
+  textOnPrimary: '#052E16',
+  textOnAccent: '#FFFFFF',
+  textOnHighlight: '#3B2F00',
 
-  // Borders
-  border: '#1E3A6E',
-  borderLight: '#2A4A80',
+  // =========================
+  // STATUS
+  // =========================
+  success: '#22C55E',
+  warning: '#FACC15',
+  error: '#EF4444',
 
-  // Gradient stops
-  gradientStart: '#E53935',
-  gradientEnd: '#1565C0',
+  // =========================
+  // BORDERS
+  // =========================
+  border: '#1D4D38',
+  borderLight: '#2E6A4F',
 
-  // Transparent
-  overlay: 'rgba(13, 27, 62, 0.85)',
-  overlayLight: 'rgba(13, 27, 62, 0.5)',
-  cardOverlay: 'rgba(13, 27, 62, 0.7)',
+  // =========================
+  // GRADIENTS
+  // =========================
+  gradientStart: '#22C55E',
+  gradientMiddle: '#3B82F6',
+  gradientEnd: '#FACC15',
+
+  // =========================
+  // OVERLAYS
+  // =========================
+  overlay: 'rgba(8, 28, 21, 0.88)',
+  overlayLight: 'rgba(8, 28, 21, 0.55)',
+  cardOverlay: 'rgba(15, 42, 32, 0.78)',
 } as const;
 
 export type ColorKey = keyof typeof Colors;

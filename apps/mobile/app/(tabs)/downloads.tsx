@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -8,19 +8,26 @@ import {
   Alert,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Typography, Spacing, BorderRadius } from '@/theme';
 import { useReadingStore } from '@/stores/readingStore';
-import { getStoryById, MOCK_STORIES } from '@/data/stories';
+import { fetchAllStories } from '@/services/storiesService';
+import type { Story } from '@/data/stories';
 
 export default function DownloadsScreen() {
   const { t, i18n } = useTranslation();
   const { downloads, removeDownload, getProgress } = useReadingStore();
+  const [allStories, setAllStories] = useState<Story[]>([]);
 
-  const downloadedStories = MOCK_STORIES.filter((s) => !!downloads[s.id]);
+  useEffect(() => {
+    fetchAllStories().then(setAllStories);
+  }, []);
+
+  const downloadedStories = allStories.filter((s) => !!downloads[s.id]);
 
   const handleRemove = (storyId: string) => {
     Alert.alert(t('downloads.remove'), '', [
@@ -90,9 +97,10 @@ export default function DownloadsScreen() {
             >
               {/* Thumbnail */}
               <View style={styles.thumbnail}>
-                <LinearGradient
-                  colors={story.gradientColors}
+                <Image
+                  source={{ uri: story.coverImage }}
                   style={StyleSheet.absoluteFill}
+                  contentFit="cover"
                 />
                 <Text style={styles.thumbnailEmoji}>{story.emoji}</Text>
               </View>

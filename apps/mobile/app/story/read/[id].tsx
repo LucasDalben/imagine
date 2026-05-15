@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,12 +9,14 @@ import {
   Animated,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'expo-image';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Typography, Spacing, BorderRadius } from '@/theme';
-import { getStoryById, type StoryPage } from '@/data/stories';
+import { type StoryPage, type Story } from '@/data/stories';
+import { fetchStoryById } from '@/services/storiesService';
 import { useReadingStore } from '@/stores/readingStore';
 
 const { width, height } = Dimensions.get('window');
@@ -24,12 +26,28 @@ export default function StoryReadScreen() {
   const { id, page: pageParam } = useLocalSearchParams<{ id: string; page: string }>();
   const { t, i18n } = useTranslation();
   const { updateProgress } = useReadingStore();
+  const [story, setStory] = useState<Story | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
 
-  const story = getStoryById(id ?? '');
+  useEffect(() => {
+    fetchStoryById(id ?? '').then((s) => {
+      setStory(s);
+      setLoading(false);
+    });
+  }, [id]);
+
   const startPage = parseInt(pageParam ?? '1', 10);
   const [currentPageNumber, setCurrentPageNumber] = useState(startPage || 1);
   const [isEnded, setIsEnded] = useState(false);
   const [isGoodEnding, setIsGoodEnding] = useState(false);
+
+  if (loading) {
+    return (
+      <View style={styles.center}>
+        <Text style={Typography.h3}>Loading...</Text>
+      </View>
+    );
+  }
 
   if (!story) {
     return (
@@ -111,11 +129,10 @@ export default function StoryReadScreen() {
     <View style={styles.container}>
       {/* Story image area — 60% */}
       <View style={styles.imageArea}>
-        <LinearGradient
-          colors={currentPage.backgroundGradient as [string, string]}
+        <Image
+          source={{ uri: currentPage.backgroundImage }}
           style={StyleSheet.absoluteFill}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
+          contentFit="cover"
         />
 
         {/* Decorative elements */}

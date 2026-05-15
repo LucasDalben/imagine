@@ -22,7 +22,7 @@ export interface StoryPage {
   text: string;
   textEs: string;
   textPtBR: string;
-  backgroundGradient: [string, string];
+  backgroundImage: string;
   emoji: string;
   choices: StoryChoice[];
 }
@@ -41,7 +41,7 @@ export interface Story {
   ageMax: number;
   totalPages: number;
   readingLevel: ReadingLevel;
-  gradientColors: [string, string];
+  coverImage: string;
   emoji: string;
   isNew?: boolean;
   isFeatured?: boolean;
@@ -67,7 +67,7 @@ export const MOCK_STORIES: Story[] = [
     ageMax: 9,
     totalPages: 60,
     readingLevel: 'beginner',
-    gradientColors: ['#E53935', '#FF8A65'],
+    coverImage: 'https://picsum.photos/seed/dragon-adventure/400/600',
     emoji: '🐉',
     isFeatured: true,
     downloadSizeMB: 12,
@@ -79,7 +79,7 @@ export const MOCK_STORIES: Story[] = [
           'Drago era el único dragón que no podía escupir fuego. Cada día los otros dragones practicaban, pero Drago solo soplaba humo azul frío.',
         textPtBR:
           'Drago era o único dragão que não conseguia cuspir fogo. Todo dia os outros dragões praticavam, mas Drago só soprava fumaça azul fria.',
-        backgroundGradient: ['#1A2D5A', '#243B6E'],
+        backgroundImage: 'https://picsum.photos/seed/s1p1/800/1200',
         emoji: '💨',
         choices: [
           {
@@ -112,7 +112,7 @@ export const MOCK_STORIES: Story[] = [
           'Drago intentó e intentó en la cueva escondida. De repente, un resplandor cálido apareció en su pecho — no era fuego, sino algo aún más poderoso: ¡una chispa de puro coraje!',
         textPtBR:
           'Drago tentou e tentou na caverna escondida. De repente, um brilho quente apareceu em seu peito — não era fogo, mas algo ainda mais poderoso: uma faísca de pura coragem!',
-        backgroundGradient: ['#E53935', '#FF6F00'],
+        backgroundImage: 'https://picsum.photos/seed/s1p2/800/1200',
         emoji: '✨',
         choices: [
           {
@@ -146,7 +146,7 @@ export const MOCK_STORIES: Story[] = [
           'El Anciano Thorn sonrió con sabiduría. "El verdadero fuego, joven, arde en tu corazón. Debes creer antes de poder soplar." Señaló hacia la Antigua Montaña de Fuego.',
         textPtBR:
           'O Ancião Thorn sorriu com sabedoria. "O verdadeiro fogo, jovem, queima em seu coração. Você deve acreditar antes de respirar." Ele apontou para a Antiga Montanha das Chamas.',
-        backgroundGradient: ['#4A148C', '#7B1FA2'],
+        backgroundImage: 'https://picsum.photos/seed/s1p15/800/1200',
         emoji: '🏔️',
         choices: [
           {
@@ -180,7 +180,7 @@ export const MOCK_STORIES: Story[] = [
           'En el Valle Helado, Drago encontró un pequeño fénix de hielo atrapado bajo un glaciar. Sus ojos brillaban con esperanza. ¡Esta era su oportunidad de ser un verdadero héroe!',
         textPtBR:
           'No Vale Gelado, Drago encontrou um filhote de fênix de gelo preso sob uma geleira. Seus olhos brilhavam com esperança. Esta era sua chance de ser um verdadeiro herói!',
-        backgroundGradient: ['#0D47A1', '#00BCD4'],
+        backgroundImage: 'https://picsum.photos/seed/s1p30/800/1200',
         emoji: '🦅',
         choices: [
           {
@@ -214,7 +214,7 @@ export const MOCK_STORIES: Story[] = [
           'Drago respiró profundo. Cada acto de valentía que había realizado llenó su corazón de calor. ¡Entonces — WHOOSH! ¡Una magnífica llama dorada brotó de su boca! ¡El pueblo estaba salvado!',
         textPtBR:
           'Drago respirou fundo. Cada ato de coragem que havia realizado encheu seu coração de calor. Então — WHOOSH! Uma magnífica chama dourada irrompeu de sua boca! A aldeia estava salva!',
-        backgroundGradient: ['#E65100', '#FFD600'],
+        backgroundImage: 'https://picsum.photos/seed/s1p45/800/1200',
         emoji: '🔥',
         choices: [
           {
@@ -249,7 +249,7 @@ export const MOCK_STORIES: Story[] = [
           'La Princesa Lily abrazó a Drago fuerte. "Nunca fuiste diferente", dijo. "¡Solo tenías un tipo diferente de fuego — el fuego de la bondad!" Todo el reino vitoreó al pequeño dragón valiente.',
         textPtBR:
           'A Princesa Lily abraçou Drago com força. "Você nunca foi diferente", ela disse. "Você só tinha um tipo diferente de fogo — o fogo da bondade!" Todo o reino aplaudiu o pequeno dragão corajoso.',
-        backgroundGradient: ['#C62828', '#F06292'],
+        backgroundImage: 'https://picsum.photos/seed/s1p55/800/1200',
         emoji: '👑',
         choices: [
           {
@@ -296,7 +296,7 @@ export const MOCK_STORIES: Story[] = [
     ageMax: 10,
     totalPages: 48,
     readingLevel: 'intermediate',
-    gradientColors: ['#4A148C', '#1565C0'],
+    coverImage: 'https://picsum.photos/seed/luna-forest/400/600',
     emoji: '🌙',
     isNew: true,
     downloadSizeMB: 9,
@@ -308,7 +308,7 @@ export const MOCK_STORIES: Story[] = [
           'Cada noche, Luna miraba por su ventana hacia el oscuro bosque. Una tarde, vio pequeñas luces danzando entre los árboles. ¿Eran luciérnagas? ¿O algo mágico?',
         textPtBR:
           'Toda noite, Luna olhava pela janela para a floresta escura. Certa noite, ela viu pequenas luzes dançando entre as árvores. Eram vaga-lumes? Ou algo mágico?',
-        backgroundGradient: ['#1A237E', '#311B92'],
+        backgroundImage: 'https://picsum.photos/seed/s2p1/800/1200',
         emoji: '✨',
         choices: [
           {
@@ -342,7 +342,7 @@ export const MOCK_STORIES: Story[] = [
           'Luna caminó de puntillas hacia el Bosque de Estrellas. Cada paso hacía que las flores brillaran más. Un sabio búho viejo aterrizó en una rama. "Bienvenida", ululó. "Soy Milo. Te he estado esperando."',
         textPtBR:
           'Luna foi na ponta dos pés para a Floresta de Luz das Estrelas. Cada passo fazia as flores brilharem mais. Uma coruja velha e sábia pousou em um galho. "Bem-vinda", ela piou. "Sou Milo. Estava esperando por você."',
-        backgroundGradient: ['#4A148C', '#880E4F'],
+        backgroundImage: 'https://picsum.photos/seed/s2p2/800/1200',
         emoji: '🦉',
         choices: [
           {
@@ -376,7 +376,7 @@ export const MOCK_STORIES: Story[] = [
           'En el corazón del bosque había un árbol antiguo tan alto como un castillo. Sus raíces formaban una puerta que brillaba como luz de estrellas. "El Espíritu del Bosque te espera", susurró Milo.',
         textPtBR:
           'No coração da floresta havia uma árvore antiga tão alta quanto um castelo. Suas raízes formavam uma porta que brilhava como luz das estrelas. "O Espírito da Floresta aguarda", sussurrou Milo.',
-        backgroundGradient: ['#1B5E20', '#2E7D32'],
+        backgroundImage: 'https://picsum.photos/seed/s2p30/800/1200',
         emoji: '🌳',
         choices: [
           {
@@ -410,7 +410,7 @@ export const MOCK_STORIES: Story[] = [
           '"Cada cien años", dijo Milo, "un niño puro de corazón puede hablar con el Espíritu del Bosque y hacer un deseo para todos los seres vivos." Luna sintió un cálido resplandor en su pecho.',
         textPtBR:
           '"A cada cem anos", disse Milo, "uma criança de coração puro pode falar com o Espírito da Floresta e fazer um desejo para todos os seres vivos." Luna sentiu um brilho quente em seu peito.',
-        backgroundGradient: ['#4527A0', '#6A1B9A'],
+        backgroundImage: 'https://picsum.photos/seed/s2p40/800/1200',
         emoji: '💫',
         choices: [
           {
@@ -444,7 +444,7 @@ export const MOCK_STORIES: Story[] = [
           'Luna cruzó la puerta. Un espíritu gentil hecho de luz de luna y estrellas apareció. "¿Qué deseas, Luna?" Luna sonrió. "¡Deseo que todos los niños siempre tengan historias para soñar!"',
         textPtBR:
           'Luna atravessou a porta. Um espírito gentil feito de luar e luz das estrelas apareceu. "O que você deseja, Luna?" Luna sorriu. "Desejo que todas as crianças sempre tenham histórias para sonhar!"',
-        backgroundGradient: ['#E91E63', '#9C27B0'],
+        backgroundImage: 'https://picsum.photos/seed/s2p45/800/1200',
         emoji: '🌟',
         choices: [
           {
@@ -491,7 +491,7 @@ export const MOCK_STORIES: Story[] = [
     ageMax: 11,
     totalPages: 52,
     readingLevel: 'intermediate',
-    gradientColors: ['#1565C0', '#00BCD4'],
+    coverImage: 'https://picsum.photos/seed/space-potato/400/600',
     emoji: '🚀',
     isNew: true,
     downloadSizeMB: 10,
@@ -503,7 +503,7 @@ export const MOCK_STORIES: Story[] = [
           'La Capitán Cometa estaba zumbando más allá de Saturno cuando BEEP-7 pitó urgentemente. En el radar: un asteroide gigante con forma de papa — ¡y estaba BAILANDO! "¡Eso es científicamente imposible!", dijo Comet.',
         textPtBR:
           'Capitão Cometa estava passando por Saturno quando BEEP-7 apitou urgentemente. No radar: um asteroide gigante em forma de batata — e estava DANÇANDO. "Isso é cientificamente impossível!", disse Comet.',
-        backgroundGradient: ['#0D47A1', '#01579B'],
+        backgroundImage: 'https://picsum.photos/seed/s3p1/800/1200',
         emoji: '🥔',
         choices: [
           {
@@ -537,7 +537,7 @@ export const MOCK_STORIES: Story[] = [
           'De cerca, la papa era enorme — ¡más grande que un autobús escolar! Pequeños alienígenas con pelo morado rebotaban en su superficie, haciéndola moverse. ¡Le saludaron a la Capitán Cometa!',
         textPtBR:
           'De perto, a batata era enorme — maior que um ônibus escolar! Pequenos alienígenas de cabelo roxo estavam saltando em sua superfície, fazendo-a balançar. Eles acenaram para Capitão Comet!',
-        backgroundGradient: ['#4A148C', '#1A237E'],
+        backgroundImage: 'https://picsum.photos/seed/s3p2/800/1200',
         emoji: '👽',
         choices: [
           {
@@ -571,7 +571,7 @@ export const MOCK_STORIES: Story[] = [
           'El traductor de los alienígenas pitó: "¡Perdimos la receta de gravedad de nuestro planeta! Sin ella, todo flota y baila. ¿Puedes ayudarnos a encontrarla?" BEEP-7 sacó las matemáticas: ¡era un problema de fórmula de gravedad!',
         textPtBR:
           'O tradutor dos alienígenas apitou: "Perdemos a receita de gravidade do nosso planeta! Sem ela, tudo flutua e dança. Você pode nos ajudar a encontrá-la?" BEEP-7 puxou a matemática: era um problema de fórmula de gravidade!',
-        backgroundGradient: ['#006064', '#00838F'],
+        backgroundImage: 'https://picsum.photos/seed/s3p30/800/1200',
         emoji: '🔬',
         choices: [
           {
@@ -605,7 +605,7 @@ export const MOCK_STORIES: Story[] = [
           'El Profesor Nebulosa apareció en pantalla, ajustando sus enormes gafas. "¡Fascinante! ¡Una constante gravitacional desplazada! ¡La solución está aquí — multiplica la masa por el factor de tambaleo!" BEEP-7 calculó instantáneamente.',
         textPtBR:
           'O Professor Nebula apareceu na tela, ajustando seus enormes óculos. "Fascinante! Uma constante gravitacional deslocada! A solução está aqui — multiplique a massa pelo fator de balançamento!" BEEP-7 calculou instantaneamente.',
-        backgroundGradient: ['#1B5E20', '#2E7D32'],
+        backgroundImage: 'https://picsum.photos/seed/s3p40/800/1200',
         emoji: '🧮',
         choices: [
           {
@@ -639,7 +639,7 @@ export const MOCK_STORIES: Story[] = [
           'BEEP-7 envió la fórmula al dispositivo alienígena. Hubo un BOOM profundo — ¡y de repente todo dejó de flotar! Los alienígenas vitorearon, la papa se asentó y la gravedad fue restaurada. "¡Salvaron nuestro mundo!", dijeron.',
         textPtBR:
           'BEEP-7 transmitiu a fórmula para o dispositivo alienígena. Houve um BOOM profundo — e de repente tudo parou de flutuar! Os alienígenas vibraram, a batata se assentou e a gravidade foi restaurada. "Vocês salvaram nosso mundo!", disseram.',
-        backgroundGradient: ['#E65100', '#F57F17'],
+        backgroundImage: 'https://picsum.photos/seed/s3p45/800/1200',
         emoji: '🎉',
         choices: [
           {
@@ -686,7 +686,7 @@ export const MOCK_STORIES: Story[] = [
     ageMax: 7,
     totalPages: 36,
     readingLevel: 'beginner',
-    gradientColors: ['#2E7D32', '#F57F17'],
+    coverImage: 'https://picsum.photos/seed/turtle-race/400/600',
     emoji: '🐢',
     downloadSizeMB: 7,
     pages: [
@@ -697,7 +697,7 @@ export const MOCK_STORIES: Story[] = [
           'Tessa la tortuga siempre quiso correr más rápido. Una mañana se despertó y — ¡ZOOM! ¡Era más rápida que el viento! Todos los animales la miraron asombrados.',
         textPtBR:
           'Tessa a tartaruga sempre quis correr mais rápido. Uma manhã ela acordou e — ZOOM! Ela era mais rápida que o vento! Todos os animais olharam em espanto.',
-        backgroundGradient: ['#1B5E20', '#388E3C'],
+        backgroundImage: 'https://picsum.photos/seed/s4p1/800/1200',
         emoji: '💨',
         choices: [
           {
@@ -731,7 +731,7 @@ export const MOCK_STORIES: Story[] = [
           'Tessa venció fácilmente a Cheetah Charlie. Pero Charlie parecía triste. "Antes amaba correr porque era el mejor", dijo. "Ahora siento que perdí mi don." Tessa sintió un nudo en la garganta.',
         textPtBR:
           'Tessa venceu Guepardo Charlie facilmente! Mas Charlie parecia triste. "Eu costumava amar correr porque era o melhor", disse ele. "Agora sinto que perdi meu dom." Tessa sentiu um nó na garganta.',
-        backgroundGradient: ['#E65100', '#BF360C'],
+        backgroundImage: 'https://picsum.photos/seed/s4p2/800/1200',
         emoji: '😢',
         choices: [
           {
@@ -765,7 +765,7 @@ export const MOCK_STORIES: Story[] = [
           'El Sabio Elefante recordó: "¡Anoche una estrella fugaz aterrizó en tu caparazón! Concedió tu deseo más profundo. Pero recuerda, Tessa — un don compartido vale el doble." Tessa pensó mucho.',
         textPtBR:
           'O Elefante Sábio se lembrou: "Ontem à noite uma estrela cadente pousou em seu casco! Ela concedeu seu desejo mais profundo. Mas lembre-se, Tessa — um dom compartilhado vale o dobro." Tessa pensou muito.',
-        backgroundGradient: ['#827717', '#F57F17'],
+        backgroundImage: 'https://picsum.photos/seed/s4p20/800/1200',
         emoji: '⭐',
         choices: [
           {
@@ -799,7 +799,7 @@ export const MOCK_STORIES: Story[] = [
           'Tessa sostuvo el fragmento de estrella hacia el cielo. "Quiero compartir esto con mi amigo", dijo. La estrella brilló y se dividió en dos — uno para Tessa y otro para Charlie. ¡Ahora ambos podían correr rápido, pero eligieron turnarse!',
         textPtBR:
           'Tessa segurou o fragmento de estrela em direção ao céu. "Quero compartilhar isso com meu amigo", disse ela. A estrela brilhou e se dividiu em dois — um para Tessa e um para Charlie. Agora ambos podiam correr rápido, mas escolheram se revezar!',
-        backgroundGradient: ['#1A237E', '#283593'],
+        backgroundImage: 'https://picsum.photos/seed/s4p30/800/1200',
         emoji: '🌟',
         choices: [
           {
@@ -846,7 +846,7 @@ export const MOCK_STORIES: Story[] = [
     ageMax: 12,
     totalPages: 55,
     readingLevel: 'advanced',
-    gradientColors: ['#37474F', '#1565C0'],
+    coverImage: 'https://picsum.photos/seed/invisible-detective/400/600',
     emoji: '🔍',
     downloadSizeMB: 11,
     pages: [
@@ -857,7 +857,7 @@ export const MOCK_STORIES: Story[] = [
           'Max miró al espejo — ¡y no vio nada! Era completamente invisible. En la escuela, encontró la vitrina del trofeo destrozada y la copa del campeonato desaparecida. "Solo yo puedo resolver esto sin ser visto", pensó.',
         textPtBR:
           'Max olhou no espelho — e não viu nada! Ele estava completamente invisível. Na escola, encontrou a vitrine do troféu destruída e a taça do campeonato desaparecida. "Só eu posso resolver isso sem ser visto", pensou.',
-        backgroundGradient: ['#263238', '#37474F'],
+        backgroundImage: 'https://picsum.photos/seed/s5p1/800/1200',
         emoji: '👻',
         choices: [
           {
@@ -890,7 +890,7 @@ export const MOCK_STORIES: Story[] = [
           'En la oficina del Director Webb, Max encontró una nota adhesiva: "Encuéntrame en el almacén del gimnasio a las 3pm — trae el trofeo." La caligrafía coincidía con la del maestro suplente. ¡Max tenía su primera pista!',
         textPtBR:
           'No escritório do Diretor Webb, Max encontrou um bilhete: "Me encontre no depósito da academia às 15h — traga o troféu." A caligrafia combinava com a do professor substituto. Max tinha sua primeira pista!',
-        backgroundGradient: ['#1A237E', '#283593'],
+        backgroundImage: 'https://picsum.photos/seed/s5p2/800/1200',
         emoji: '📝',
         choices: [
           {
@@ -924,7 +924,7 @@ export const MOCK_STORIES: Story[] = [
           'La Detective Rosa sospechaba del nuevo maestro de arte que hacía preguntas sobre el trofeo. "Su nombre está en la lista del trofeo — de hace 20 años", explicó Rosa. "¡Ella cree que el trofeo fue robado de su escuela!"',
         textPtBR:
           'A Detetive Rosa suspeitava da nova professora de arte que estava fazendo perguntas sobre o troféu. "O nome dela está na lista do troféu — de 20 anos atrás", Rosa explicou. "Ela acha que o troféu foi roubado da escola dela!"',
-        backgroundGradient: ['#880E4F', '#AD1457'],
+        backgroundImage: 'https://picsum.photos/seed/s5p35/800/1200',
         emoji: '🎨',
         choices: [
           {
@@ -958,7 +958,7 @@ export const MOCK_STORIES: Story[] = [
           'Los registros mostraban que el trofeo fue ganado justamente — ¡pero por ambas escuelas! Se suponía que debían compartirlo, pero se perdió en una mudanza hace 20 años. La maestra de arte solo quería recuperarlo para la exhibición de su escuela. ¡Fue un malentendido!',
         textPtBR:
           'Os registros mostraram que o troféu foi ganho justamente — mas por ambas as escolas! Deveria ser compartilhado, mas se perdeu em uma mudança 20 anos atrás. A professora de arte só queria recuperá-lo para a exposição de sua escola. Foi um mal-entendido!',
-        backgroundGradient: ['#004D40', '#00695C'],
+        backgroundImage: 'https://picsum.photos/seed/s5p40/800/1200',
         emoji: '🤝',
         choices: [
           {
@@ -1006,7 +1006,7 @@ export const MOCK_STORIES: Story[] = [
     ageMax: 9,
     totalPages: 40,
     readingLevel: 'beginner',
-    gradientColors: ['#E65100', '#6A1B9A'],
+    coverImage: 'https://picsum.photos/seed/fox-song/400/600',
     emoji: '🦊',
     downloadSizeMB: 8,
     pages: [
@@ -1017,7 +1017,7 @@ export const MOCK_STORIES: Story[] = [
           'Cada mañana el bosque resonaba con la mágica Primera Canción. Pero un día — silencio. El Cuervo había robado las notas y las había escondido en su nido en lo alto del Gran Roble. "¡Quiero toda la música para mí!" graznó.',
         textPtBR:
           'Toda manhã a floresta ecoava com a mágica Primeira Música. Mas um dia — silêncio. O Corvo tinha roubado as notas e as escondido em seu ninho no topo do Grande Carvalho. "Quero toda a música para mim!" ele grasnou.',
-        backgroundGradient: ['#BF360C', '#E65100'],
+        backgroundImage: 'https://picsum.photos/seed/s6p1/800/1200',
         emoji: '🎵',
         choices: [
           {
@@ -1050,7 +1050,7 @@ export const MOCK_STORIES: Story[] = [
           'El Zorro se acercó al Cuervo con una piedra brillante. "Encontré algo aún más valioso que la música", dijo el Zorro. "¡Una piedra que concede tres deseos!" Los ojos del Cuervo se iluminaron — ¡soltó una nota para agarrar la piedra!',
         textPtBR:
           'A Raposa se aproximou do Corvo com uma pedra brilhante. "Encontrei algo ainda mais valioso que música", disse a Raposa. "Uma pedra que concede três desejos!" Os olhos do Corvo brilharam — ele soltou uma nota para pegar a pedra!',
-        backgroundGradient: ['#4527A0', '#6A1B9A'],
+        backgroundImage: 'https://picsum.photos/seed/s6p2/800/1200',
         emoji: '💎',
         choices: [
           {
@@ -1084,7 +1084,7 @@ export const MOCK_STORIES: Story[] = [
           'La Zorra escaló y escaló. Cerca de la cima encontró una nota atrapada en una rama — pero el Cuervo estaba observando. "¿Qué estás haciendo?" graznó. "La música pertenece a todos", dijo el Zorro firmemente. El Cuervo se detuvo, pensando.',
         textPtBR:
           'A Raposa subiu e subiu. Perto do topo encontrou uma nota presa em um galho — mas o Corvo estava observando. "O que você está fazendo?" ele grasnou. "A música pertence a todos", disse a Raposa firmemente. O Corvo pausou, pensando.',
-        backgroundGradient: ['#1B5E20', '#2E7D32'],
+        backgroundImage: 'https://picsum.photos/seed/s6p20/800/1200',
         emoji: '🌿',
         choices: [
           {
@@ -1118,7 +1118,7 @@ export const MOCK_STORIES: Story[] = [
           '"¿Qué tal", dijo el Zorro gentilmente, "si pudieras ser el director de la música en lugar de esconderla? Cada pájaro tocaría TU canción." Los ojos del Cuervo se abrieron. ¡Ser director sonaba mucho mejor que acumular notas solo!',
         textPtBR:
           '"E se", disse a Raposa gentilmente, "você pudesse ser o maestro da música em vez de escondê-la? Cada pássaro tocaria SUA música." Os olhos do Corvo se arregalaram. Ser maestro soava muito melhor do que guardar as notas sozinho!',
-        backgroundGradient: ['#006064', '#0097A7'],
+        backgroundImage: 'https://picsum.photos/seed/s6p30/800/1200',
         emoji: '🎶',
         choices: [
           {
@@ -1152,7 +1152,7 @@ export const MOCK_STORIES: Story[] = [
           'El Cuervo descendió del árbol y extendió sus alas. Todos los animales del bosque se reunieron. Levantó un ala — y la música más bella llenó el bosque. Desde ese día, el Cuervo fue el director más feliz y celebrado del país.',
         textPtBR:
           'O Corvo desceu da árvore e abriu suas asas. Todos os animais da floresta se reuniram. Ele levantou uma asa — e a música mais bela encheu a floresta. Desde aquele dia, o Corvo foi o maestro mais feliz e celebrado da terra.',
-        backgroundGradient: ['#E91E63', '#9C27B0'],
+        backgroundImage: 'https://picsum.photos/seed/s6p35/800/1200',
         emoji: '🎼',
         choices: [
           {

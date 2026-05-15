@@ -17,7 +17,7 @@ import { Colors, Typography, Spacing, BorderRadius } from '@/theme';
 import { useAuthStore } from '@/stores/authStore';
 import { useLanguageStore, SUPPORTED_LANGUAGES, type LanguageCode } from '@/stores/languageStore';
 import { useReadingStore } from '@/stores/readingStore';
-import { MOCK_STORIES } from '@/data/stories';
+
 
 const AVATAR_OPTIONS = ['🦁', '⭐', '🐉', '🦊', '🦉', '🐢', '🚀', '🌙'];
 

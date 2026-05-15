@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { Colors, BorderRadius, Typography, Spacing } from '@/theme';
 import type { Story } from '@/data/stories';
@@ -29,11 +29,10 @@ export function StoryCard({ story, size = 'md' }: StoryCardProps) {
       activeOpacity={0.88}
       onPress={() => router.push(`/story/${story.id}`)}
     >
-      <LinearGradient
-        colors={story.gradientColors}
+      <Image
+        source={{ uri: story.coverImage }}
         style={StyleSheet.absoluteFill}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
+        contentFit="cover"
       />
 
       {/* Emoji illustration */}
