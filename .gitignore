@@ -1,0 +1,57 @@
+# Contexto e agentes de desenvolvimento
+context.md
+agents/
+
+# Imagens locais
+imagens/
+
+# Dependências
+**/node_modules/
+
+# Builds e artefatos
+**/dist/
+**/build/
+**/*.tsbuildinfo
+
+# Expo
+**/.expo/
+
+# Variáveis de ambiente
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+**/.env.test
+**/.env.staging
+
+# Segurança — chaves, certificados e configs sensíveis
+**/*.pem
+**/*.key
+**/*.keystore
+**/*.jks
+**/google-services.json
+**/GoogleService-Info.plist
+
+# Logs
+**/*.log
+**/npm-debug.log*
+**/pnpm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Sistema operacional
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# IDEs e editores
+.idea/
+.vscode/settings.json
+*.swp
+*.swo
+
+# Testes
+**/coverage/

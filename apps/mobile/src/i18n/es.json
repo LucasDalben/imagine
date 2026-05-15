@@ -1,0 +1,150 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "retry": "Intentar de nuevo",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Guardar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "finish": "Finalizar",
+    "or": "o"
+  },
+  "auth": {
+    "login": {
+      "title": "¡Bienvenido de nuevo!",
+      "subtitle": "Continúa tu aventura de historias",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tu@correo.com",
+      "password": "Contraseña",
+      "passwordPlaceholder": "Tu contraseña",
+      "loginButton": "Iniciar Sesión",
+      "noAccount": "¿No tienes cuenta?",
+      "createAccount": "Registrarse",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "orContinueWith": "o continúa con",
+      "google": "Continuar con Google",
+      "apple": "Continuar con Apple"
+    },
+    "createAccount": {
+      "title": "Crear Cuenta",
+      "subtitle": "Comienza tu aventura de historias",
+      "step1Title": "¡Hola!",
+      "step1Subtitle": "Vamos a crear tu cuenta",
+      "step1Button": "Comenzar",
+      "step2Title": "Tu correo electrónico",
+      "step2Subtitle": "Lo usaremos para iniciar sesión",
+      "emailPlaceholder": "tu@correo.com",
+      "step2Button": "Continuar",
+      "step3Title": "Crea una contraseña",
+      "step3Subtitle": "Mantén tu cuenta segura",
+      "passwordPlaceholder": "Al menos 8 caracteres",
+      "confirmPasswordPlaceholder": "Repite la contraseña",
+      "step3Button": "Crear Cuenta",
+      "alreadyHaveAccount": "¿Ya tienes cuenta?",
+      "signIn": "Iniciar Sesión",
+      "namePlaceholder": "Tu nombre completo"
+    }
+  },
+  "home": {
+    "greeting": "Hola,",
+    "guest": "Explorador",
+    "featured": "Destacado",
+    "recommended": "Recomendado para Ti",
+    "continueReading": "Continuar Leyendo",
+    "newStories": "Nuevas Historias",
+    "seeAll": "Ver todo",
+    "themes": {
+      "all": "Todo",
+      "adventure": "Aventura",
+      "fantasy": "Fantasía",
+      "science": "Ciencia",
+      "nature": "Naturaleza",
+      "mystery": "Misterio",
+      "fables": "Fábulas"
+    },
+    "themeSection": {
+      "adventure": "Historias de Aventura",
+      "fantasy": "Mundo de Fantasía",
+      "science": "Ciencia y Descubrimiento",
+      "nature": "Cuentos de Naturaleza",
+      "mystery": "Pequeños Misterios",
+      "fables": "Fábulas Clásicas"
+    }
+  },
+  "story": {
+    "detail": {
+      "start": "Empezar Historia",
+      "continue": "Continuar donde lo dejé",
+      "theme": "Tema",
+      "characters": "Personajes",
+      "ageRange": "Edades",
+      "pages": "páginas",
+      "language": "Idioma",
+      "about": "Sobre esta historia",
+      "download": "Descargar",
+      "downloading": "Descargando...",
+      "downloaded": "Descargado"
+    },
+    "read": {
+      "page": "Página",
+      "choose": "¿Qué pasa después?",
+      "theEnd": "¡Fin!",
+      "endSubtitle": "¡Llegaste a un final!",
+      "playAgain": "Leer de Nuevo",
+      "goHome": "Volver al Inicio",
+      "option": "Opción"
+    }
+  },
+  "downloads": {
+    "title": "Descargas",
+    "subtitle": "Lee sin conexión, cuando quieras",
+    "empty": "Sin descargas todavía",
+    "emptySubtitle": "Descarga historias para leer sin internet",
+    "downloading": "Descargando...",
+    "downloaded": "Disponible sin conexión",
+    "remove": "Eliminar",
+    "size": "MB"
+  },
+  "profile": {
+    "title": "Perfil",
+    "editProfile": "Editar Perfil",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "language": "Idioma",
+    "subscription": "Suscripción",
+    "free": "Plan Gratuito",
+    "premium": "Premium",
+    "logout": "Cerrar Sesión",
+    "settings": "Configuración",
+    "children": "Perfiles Infantiles",
+    "addChild": "Agregar Niño",
+    "readingStats": "Estadísticas de Lectura",
+    "storiesRead": "Historias Leídas",
+    "totalTime": "Tiempo Total",
+    "favorites": "Favoritos",
+    "saveChanges": "Guardar Cambios"
+  },
+  "search": {
+    "title": "Buscar",
+    "placeholder": "Buscar historias...",
+    "noResults": "No se encontraron historias",
+    "noResultsSubtitle": "Intenta con otra palabra clave",
+    "popular": "Búsquedas Populares",
+    "results": "resultados"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "search": "Buscar",
+    "downloads": "Descargas",
+    "profile": "Perfil"
+  },
+  "language": {
+    "select": "Seleccionar Idioma",
+    "en": "English",
+    "es": "Español",
+    "ptBR": "Português (BR)",
+    "changeLanguage": "Cambiar Idioma"
+  }
+}

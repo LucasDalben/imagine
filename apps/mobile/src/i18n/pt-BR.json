@@ -1,0 +1,150 @@
+{
+  "common": {
+    "loading": "Carregando...",
+    "error": "Ocorreu um erro",
+    "retry": "Tentar novamente",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "save": "Salvar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "finish": "Finalizar",
+    "or": "ou"
+  },
+  "auth": {
+    "login": {
+      "title": "Bem-vindo de volta!",
+      "subtitle": "Continue sua jornada de histórias",
+      "email": "E-mail",
+      "emailPlaceholder": "seu@email.com",
+      "password": "Senha",
+      "passwordPlaceholder": "Sua senha",
+      "loginButton": "Entrar",
+      "noAccount": "Não tem uma conta?",
+      "createAccount": "Criar conta",
+      "forgotPassword": "Esqueceu a senha?",
+      "orContinueWith": "ou continue com",
+      "google": "Continuar com o Google",
+      "apple": "Continuar com a Apple"
+    },
+    "createAccount": {
+      "title": "Criar Conta",
+      "subtitle": "Comece sua aventura de histórias",
+      "step1Title": "Olá!",
+      "step1Subtitle": "Vamos criar sua conta",
+      "step1Button": "Começar",
+      "step2Title": "Seu e-mail",
+      "step2Subtitle": "Usaremos para fazer login",
+      "emailPlaceholder": "seu@email.com",
+      "step2Button": "Continuar",
+      "step3Title": "Crie uma senha",
+      "step3Subtitle": "Mantenha sua conta segura",
+      "passwordPlaceholder": "Pelo menos 8 caracteres",
+      "confirmPasswordPlaceholder": "Repita a senha",
+      "step3Button": "Criar Conta",
+      "alreadyHaveAccount": "Já tem uma conta?",
+      "signIn": "Entrar",
+      "namePlaceholder": "Seu nome completo"
+    }
+  },
+  "home": {
+    "greeting": "Olá,",
+    "guest": "Explorador",
+    "featured": "Destaque",
+    "recommended": "Recomendado para Você",
+    "continueReading": "Continuar Lendo",
+    "newStories": "Novas Histórias",
+    "seeAll": "Ver tudo",
+    "themes": {
+      "all": "Todos",
+      "adventure": "Aventura",
+      "fantasy": "Fantasia",
+      "science": "Ciência",
+      "nature": "Natureza",
+      "mystery": "Mistério",
+      "fables": "Fábulas"
+    },
+    "themeSection": {
+      "adventure": "Histórias de Aventura",
+      "fantasy": "Mundo da Fantasia",
+      "science": "Ciência e Descobertas",
+      "nature": "Contos da Natureza",
+      "mystery": "Pequenos Mistérios",
+      "fables": "Fábulas Clássicas"
+    }
+  },
+  "story": {
+    "detail": {
+      "start": "Iniciar História",
+      "continue": "Continuar de onde parou",
+      "theme": "Tema",
+      "characters": "Personagens",
+      "ageRange": "Idades",
+      "pages": "páginas",
+      "language": "Idioma",
+      "about": "Sobre esta história",
+      "download": "Baixar",
+      "downloading": "Baixando...",
+      "downloaded": "Baixado"
+    },
+    "read": {
+      "page": "Página",
+      "choose": "O que acontece depois?",
+      "theEnd": "Fim!",
+      "endSubtitle": "Você chegou a um final!",
+      "playAgain": "Ler Novamente",
+      "goHome": "Voltar ao Início",
+      "option": "Opção"
+    }
+  },
+  "downloads": {
+    "title": "Downloads",
+    "subtitle": "Leia offline, a qualquer hora",
+    "empty": "Nenhum download ainda",
+    "emptySubtitle": "Baixe histórias para ler sem internet",
+    "downloading": "Baixando...",
+    "downloaded": "Disponível offline",
+    "remove": "Remover",
+    "size": "MB"
+  },
+  "profile": {
+    "title": "Perfil",
+    "editProfile": "Editar Perfil",
+    "name": "Nome",
+    "email": "E-mail",
+    "language": "Idioma",
+    "subscription": "Assinatura",
+    "free": "Plano Gratuito",
+    "premium": "Premium",
+    "logout": "Sair",
+    "settings": "Configurações",
+    "children": "Perfis Infantis",
+    "addChild": "Adicionar Criança",
+    "readingStats": "Estatísticas de Leitura",
+    "storiesRead": "Histórias Lidas",
+    "totalTime": "Tempo Total",
+    "favorites": "Favoritos",
+    "saveChanges": "Salvar Alterações"
+  },
+  "search": {
+    "title": "Buscar",
+    "placeholder": "Buscar histórias...",
+    "noResults": "Nenhuma história encontrada",
+    "noResultsSubtitle": "Tente outra palavra-chave",
+    "popular": "Buscas Populares",
+    "results": "resultados"
+  },
+  "navigation": {
+    "home": "Início",
+    "search": "Buscar",
+    "downloads": "Downloads",
+    "profile": "Perfil"
+  },
+  "language": {
+    "select": "Selecionar Idioma",
+    "en": "English",
+    "es": "Español",
+    "ptBR": "Português (BR)",
+    "changeLanguage": "Mudar Idioma"
+  }
+}
