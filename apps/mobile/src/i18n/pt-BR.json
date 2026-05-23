@@ -89,9 +89,13 @@
     },
     "read": {
       "page": "Página",
-      "choose": "O que acontece depois?",
-      "theEnd": "Fim!",
-      "endSubtitle": "Você chegou a um final!",
+      "choose": "O que você faz?",
+      "continue": "Continuar",
+      "theEnd": "A história termina",
+      "endGoodTitle": "Um final extraordinário!",
+      "endGoodSubtitle": "Suas escolhas moldaram essa história.",
+      "endBadTitle": "A história decidiu por você...",
+      "endBadSubtitle": "Alguns caminhos levam à sombra. Tente novamente?",
       "playAgain": "Ler Novamente",
       "goHome": "Voltar ao Início",
       "option": "Opção"
@@ -146,5 +150,8 @@
     "es": "Español",
     "ptBR": "Português (BR)",
     "changeLanguage": "Mudar Idioma"
+  },
+  "splash": {
+    "welcome": "Bem-vindo ao Imagine"
   }
 }

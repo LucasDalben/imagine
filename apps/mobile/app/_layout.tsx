@@ -1,30 +1,43 @@
 import '../src/i18n';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useAuthStore } from '@/stores/authStore';
 import { useLanguageStore } from '@/stores/languageStore';
 import { useReadingStore } from '@/stores/readingStore';
 import { Colors } from '@/theme';
+import { SplashIntro } from '@/components/shared/SplashIntro';
+import { AnimatedBackground } from '@/components/shared/AnimatedBackground';
 
 export default function RootLayout() {
-  const { loadSession, isAuthenticated, isLoading } = useAuthStore();
+  const { loadSession, isLoading } = useAuthStore();
   const { loadSavedLanguage } = useLanguageStore();
   const { loadAll } = useReadingStore();
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     Promise.all([loadSession(), loadSavedLanguage(), loadAll()]);
   }, []);
 
+  if (showSplash) {
+    return (
+      <>
+        <StatusBar style="dark" />
+        <SplashIntro onFinish={() => setShowSplash(false)} />
+      </>
+    );
+  }
+
   if (isLoading) return null;
 
   return (
     <>
+      <AnimatedBackground />
       <StatusBar style="light" />
       <Stack
         screenOptions={{
           headerShown: false,
-          contentStyle: { backgroundColor: Colors.background },
+          contentStyle: { backgroundColor: 'transparent' },
           animation: 'fade',
         }}
       >

@@ -44,10 +44,10 @@ export const Colors = {
   // =========================
   // BACKGROUNDS
   // =========================
-  background: '#081C15',
-  surface: '#0F2A20',
-  surfaceElevated: '#163828',
-  surfaceHighlight: '#1F4A36',
+  background: '#0A0B10',
+  surface: '#0F1018',
+  surfaceElevated: '#161820',
+  surfaceHighlight: '#1E2130',
 
   // =========================
   // PRIMARY BRAND
@@ -67,9 +67,9 @@ export const Colors = {
   // TEXT
   // =========================
   textPrimary: '#FFFFFF',
-  textSecondary: '#D1FAE5',
-  textMuted: '#A7CDB8',
-  textDisabled: '#6B8F7A',
+  textSecondary: '#C8C9D4',
+  textMuted: '#8E9099',
+  textDisabled: '#55575F',
 
   // Text on bright buttons/cards
   textOnPrimary: '#052E16',
@@ -86,8 +86,8 @@ export const Colors = {
   // =========================
   // BORDERS
   // =========================
-  border: '#1D4D38',
-  borderLight: '#2E6A4F',
+  border: '#252830',
+  borderLight: '#343848',
 
   // =========================
   // GRADIENTS
@@ -99,9 +99,21 @@ export const Colors = {
   // =========================
   // OVERLAYS
   // =========================
-  overlay: 'rgba(8, 28, 21, 0.88)',
-  overlayLight: 'rgba(8, 28, 21, 0.55)',
-  cardOverlay: 'rgba(15, 42, 32, 0.78)',
+  overlay: 'rgba(10, 11, 16, 0.88)',
+  overlayLight: 'rgba(10, 11, 16, 0.55)',
+  cardOverlay: 'rgba(15, 16, 24, 0.78)',
+
+  // =========================
+  // ENDING SCREENS
+  // =========================
+  /** Good ending — warm amber/gold gradient top */
+  endingGoodFrom: '#D97706',
+  /** Good ending — rich amber bottom */
+  endingGoodTo: '#78350F',
+  /** Bad ending — cold deep indigo top */
+  endingBadFrom: '#1E1B4B',
+  /** Bad ending — near-black bottom */
+  endingBadTo: '#09090F',
 } as const;
 
 export type ColorKey = keyof typeof Colors;

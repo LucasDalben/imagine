@@ -89,9 +89,13 @@
     },
     "read": {
       "page": "Page",
-      "choose": "What happens next?",
-      "theEnd": "The End!",
-      "endSubtitle": "You reached an ending!",
+      "choose": "What will you do?",
+      "continue": "Continue",
+      "theEnd": "The Story Ends",
+      "endGoodTitle": "A remarkable ending!",
+      "endGoodSubtitle": "Your choices shaped this story.",
+      "endBadTitle": "The story chose your fate...",
+      "endBadSubtitle": "Some paths lead to shadow. Try again?",
       "playAgain": "Read Again",
       "goHome": "Back to Home",
       "option": "Option"
@@ -146,5 +150,8 @@
     "es": "Español",
     "ptBR": "Português (BR)",
     "changeLanguage": "Change Language"
+  },
+  "splash": {
+    "welcome": "Welcome to Imagine"
   }
 }

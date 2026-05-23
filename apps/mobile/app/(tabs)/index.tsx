@@ -21,6 +21,8 @@ import {
   HorizontalList,
   ThemeChip,
 } from '@/components/shared/ListComponents';
+import { MagicRing } from '@/components/shared/MagicRing';
+import { AnimatedBackground } from '@/components/shared/AnimatedBackground';
 import {
   STORY_THEMES,
   THEME_EMOJIS,
@@ -117,7 +119,10 @@ export default function HomeScreen() {
   const displayedStories = selectedTheme === 'all' ? allStories : storiesByTheme;
 
   return (
-    <SafeAreaView style={styles.safe} edges={['top']}>
+    <View style={styles.container}>
+      <AnimatedBackground />
+      <MagicRing />
+      <SafeAreaView style={styles.safe} edges={['top']}>
       <ScrollView
         style={styles.scroll}
         showsVerticalScrollIndicator={false}
@@ -224,12 +229,14 @@ export default function HomeScreen() {
 
         <View style={styles.bottomPad} />
       </ScrollView>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: Colors.background },
+  container: { flex: 1, backgroundColor: Colors.background, overflow: 'hidden' },
+  safe: { flex: 1 },
   scroll: { flex: 1 },
   content: { paddingBottom: 16 },
   header: {

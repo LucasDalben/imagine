@@ -1,4 +1,4 @@
-export type StoryTheme =
+﻿export type StoryTheme =
   | 'adventure'
   | 'fantasy'
   | 'science'
@@ -14,7 +14,7 @@ export interface StoryChoice {
   textEs: string;
   textPtBR: string;
   nextPage: number | null;
-  isEnding?: boolean;
+  endingType?: 'good' | 'bad';
 }
 
 export interface StoryPage {
@@ -25,6 +25,10 @@ export interface StoryPage {
   backgroundImage: string;
   emoji: string;
   choices: StoryChoice[];
+  /** 'narrative' = single tap Continue, 'choice' = 2-3 branching options */
+  type?: 'narrative' | 'choice';
+  /** present on ending pages (choices: []) */
+  isEnding?: boolean;
 }
 
 export interface Story {
@@ -63,7 +67,7 @@ export const MOCK_STORIES: Story[] = [
       'Drago, um jovem dragão com medo de fogo, deve encontrar coragem para salvar sua aldeia de um inverno eterno.',
     theme: 'adventure',
     characters: ['Drago', 'Princess Lily', 'Elder Thorn'],
-    ageMin: 4,
+    ageMin: 7,
     ageMax: 9,
     totalPages: 60,
     readingLevel: 'beginner',
@@ -135,7 +139,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Guardar el poder en secreto y regresar a casa',
             textPtBR: 'Guardar o poder em segredo e ir para casa',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -169,7 +173,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Regresar a casa desanimado',
             textPtBR: 'Voltar para casa desanimado',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -203,7 +207,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Salir del valle rápidamente',
             textPtBR: 'Sair do vale rapidamente',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -223,7 +227,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: '¡Celebrar con todo el pueblo!',
             textPtBR: 'Comemorar com toda a aldeia!',
             nextPage: null,
-            isEnding: false,
+            endingType: 'good',
           },
           {
             id: '45b',
@@ -238,7 +242,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Regresar tranquilamente a tu cueva',
             textPtBR: 'Voltar silenciosamente para sua caverna',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -258,7 +262,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Fin — ¡Un Héroe ha Nacido!',
             textPtBR: 'Fim — Um Herói Nasce!',
             nextPage: null,
-            isEnding: false,
+            endingType: 'good',
           },
           {
             id: '55b',
@@ -266,7 +270,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Continuar la aventura en el Libro 2',
             textPtBR: 'Continuar a aventura no Livro 2',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
           {
             id: '55c',
@@ -292,7 +296,7 @@ export const MOCK_STORIES: Story[] = [
       'Luna descobre uma floresta mágica que brilha à noite, onde cada árvore guarda um antigo segredo.',
     theme: 'fantasy',
     characters: ['Luna', 'Milo the Owl', 'The Forest Spirit'],
-    ageMin: 5,
+    ageMin: 7,
     ageMax: 10,
     totalPages: 48,
     readingLevel: 'intermediate',
@@ -331,7 +335,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Ir a dormir — debe ser un sueño',
             textPtBR: 'Ir dormir — deve ser um sonho',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -365,7 +369,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Correr a casa, asustada',
             textPtBR: 'Correr para casa com medo',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -399,7 +403,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Quedarse afuera y observar',
             textPtBR: 'Ficar do lado de fora e observar',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -433,7 +437,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Sentirse demasiado pequeña para hacer tal deseo',
             textPtBR: 'Sentir-se pequena demais para fazer tal desejo',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -453,7 +457,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Fin — ¡Un Deseo Mágico Concedido!',
             textPtBR: 'Fim — Um Desejo Mágico Realizado!',
             nextPage: null,
-            isEnding: false,
+            endingType: 'good',
           },
           {
             id: '45b',
@@ -468,7 +472,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Pedir un deseo diferente',
             textPtBR: 'Pedir um desejo diferente',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -487,7 +491,7 @@ export const MOCK_STORIES: Story[] = [
       'Capitão Cometa e seu amigo robô BEEP-7 devem resolver o mistério de uma batata gigante dançando perto de Júpiter.',
     theme: 'science',
     characters: ['Captain Comet', 'BEEP-7', 'Professor Nebula'],
-    ageMin: 5,
+    ageMin: 7,
     ageMax: 11,
     totalPages: 52,
     readingLevel: 'intermediate',
@@ -526,7 +530,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Reportarlo y continuar tu misión',
             textPtBR: 'Reportar e continuar sua missão',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -560,7 +564,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: '¡Salir volando — los aliens dan miedo!',
             textPtBR: 'Voar para longe — aliens dão medo!',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -594,7 +598,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Decirles que no eres bueno en matemáticas',
             textPtBR: 'Dizer que não é bom em matemática',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -628,7 +632,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Preocuparse de que la solución no funcione',
             textPtBR: 'Preocupar-se que a solução pode não funcionar',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -648,7 +652,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: '¡Fin — La Ciencia Salva el Día!',
             textPtBR: 'Fim — A Ciência Salva o Dia!',
             nextPage: null,
-            isEnding: false,
+            endingType: 'good',
           },
           {
             id: '45b',
@@ -656,7 +660,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Aceptar una invitación para visitar el planeta alienígena',
             textPtBR: 'Aceitar um convite para visitar o planeta alienígena',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
           {
             id: '45c',
@@ -682,7 +686,7 @@ export const MOCK_STORIES: Story[] = [
       'Tessa a tartaruga acorda um dia correndo mais rápido que um guepardo! Mas ser a mais rápida é realmente o que ela queria?',
     theme: 'nature',
     characters: ['Tessa', 'Cheetah Charlie', 'Wise Elephant'],
-    ageMin: 3,
+    ageMin: 7,
     ageMax: 7,
     totalPages: 36,
     readingLevel: 'beginner',
@@ -720,7 +724,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Disfrutar siendo rápida y olvidarse de todo',
             textPtBR: 'Aproveitar ser rápida e esquecer tudo',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -754,7 +758,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: '¡Quedarse con la velocidad — se siente genial!',
             textPtBR: 'Ficar com a velocidade — parece ótimo!',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -781,7 +785,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Guardar el don y enseñar a otros a ser rápidos',
             textPtBR: 'Guardar o dom e ensinar outros a ser rápidos',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
           {
             id: '20c',
@@ -808,7 +812,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Fin — ¡La Amistad Gana!',
             textPtBR: 'Fim — A Amizade Vence!',
             nextPage: null,
-            isEnding: false,
+            endingType: 'good',
           },
           {
             id: '30b',
@@ -816,7 +820,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Organizar una carrera en el bosque para todos',
             textPtBR: 'Organizar uma corrida na floresta para todos',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
           {
             id: '30c',
@@ -842,7 +846,7 @@ export const MOCK_STORIES: Story[] = [
       'Max acorda um dia e descobre que ficou invisível. Ele deve descobrir quem roubou o troféu da escola antes que alguém descubra seu segredo.',
     theme: 'mystery',
     characters: ['Max', 'Detective Rosa', 'Principal Webb'],
-    ageMin: 6,
+    ageMin: 7,
     ageMax: 12,
     totalPages: 55,
     readingLevel: 'advanced',
@@ -913,7 +917,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Dejar la nota y pensar más',
             textPtBR: 'Deixar o bilhete e pensar mais',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -947,7 +951,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Esto es demasiado complicado — rendirse',
             textPtBR: 'Isso é complicado demais — desistir',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -967,7 +971,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Ayudar a ambas escuelas a compartir el trofeo',
             textPtBR: 'Ajudar ambas as escolas a compartilhar o troféu',
             nextPage: null,
-            isEnding: false,
+            endingType: 'good',
           },
           {
             id: '40b',
@@ -975,7 +979,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Pedirle al Director Webb que haga una copia',
             textPtBR: 'Pedir ao Diretor Webb que faça uma cópia',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
           {
             id: '40c',
@@ -983,7 +987,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Dejar que los adultos lo resuelvan',
             textPtBR: 'Deixar os adultos resolverem',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
         ],
       },
@@ -1002,7 +1006,7 @@ export const MOCK_STORIES: Story[] = [
       'Uma raposa esperta deve recuperar a música mágica roubada por um corvo travesso antes que a floresta perca sua música para sempre.',
     theme: 'fables',
     characters: ['Fox', 'Crow', 'The Forest Orchestra'],
-    ageMin: 4,
+    ageMin: 7,
     ageMax: 9,
     totalPages: 40,
     readingLevel: 'beginner',
@@ -1066,7 +1070,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Agarrar la nota caída y correr',
             textPtBR: 'Pegar a nota caída e correr',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
           {
             id: '2c',
@@ -1100,7 +1104,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Agarrar todas las notas que puedas alcanzar',
             textPtBR: 'Pegar todas as notas que você conseguir alcançar',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
           {
             id: '20c',
@@ -1134,7 +1138,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'El Cuervo se queda con las notas de todas formas',
             textPtBR: 'O Corvo fica com as notas mesmo assim',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
           {
             id: '30c',
@@ -1161,7 +1165,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Fin — ¡La Música Vive!',
             textPtBR: 'Fim — A Música Continua!',
             nextPage: null,
-            isEnding: false,
+            endingType: 'good',
           },
           {
             id: '35b',
@@ -1169,7 +1173,7 @@ export const MOCK_STORIES: Story[] = [
             textEs: 'Unirse a la orquesta como flautista',
             textPtBR: 'Juntar-se à orquestra como flautista',
             nextPage: null,
-            isEnding: true,
+            endingType: 'bad',
           },
           {
             id: '35c',
