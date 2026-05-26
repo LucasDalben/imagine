@@ -16,6 +16,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors, Typography, Spacing, BorderRadius } from '@/theme';
 import { THEME_EMOJIS, type Story } from '@/data/stories';
+import { getStoryCoverSource, hasLocalCoverImage } from '@/data/storyLocalImages';
 import { fetchStoryById } from '@/services/storiesService';
 import { useReadingStore } from '@/stores/readingStore';
 import { Button } from '@/components/shared/Button';
@@ -94,16 +95,25 @@ export default function StoryDetailScreen() {
     });
   };
 
+  const handleRestart = () => {
+    router.push({
+      pathname: '/story/read/[id]',
+      params: { id: story.id, page: 1 },
+    });
+  };
+
   return (
     <View style={styles.container}>
       {/* Hero image area — ~55% of screen */}
       <View style={styles.heroArea}>
         <Image
-          source={{ uri: story.coverImage }}
+          source={getStoryCoverSource(story.id, story.coverImage) ?? { uri: '' }}
           style={StyleSheet.absoluteFill}
           contentFit="cover"
         />
-        <Text style={styles.heroEmoji}>{story.emoji}</Text>
+        {!hasLocalCoverImage(story.id) && (
+          <Text style={styles.heroEmoji}>{story.emoji}</Text>
+        )}
 
         {/* Top nav */}
         <SafeAreaView style={styles.topNav} edges={['top']}>
@@ -153,6 +163,17 @@ export default function StoryDetailScreen() {
           onPress={handleStart}
           style={styles.startBtn}
         />
+
+        {/* Restart button — only visible when there is progress */}
+        {progress && progress.currentPage > 1 && (
+          <Button
+            title={t('story.detail.restart')}
+            variant="ghost"
+            size="md"
+            onPress={handleRestart}
+            style={styles.restartBtn}
+          />
+        )}
 
         {/* Description */}
         <Text style={styles.sectionLabel}>{t('story.detail.about')}</Text>
@@ -268,7 +289,8 @@ const styles = StyleSheet.create({
 
   title: { ...Typography.h1, marginBottom: Spacing.md },
 
-  startBtn: { marginBottom: Spacing.lg },
+  startBtn: { marginBottom: Spacing.sm },
+  restartBtn: { marginBottom: Spacing.lg, alignSelf: 'center' },
 
   sectionLabel: {
     ...Typography.label,

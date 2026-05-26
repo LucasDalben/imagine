@@ -41,7 +41,7 @@ const story = {
   cover_image: null,
   emoji: '🐊',
   is_new: true,
-  is_featured: true,
+  is_featured: false,
   download_size_mb: 0,
   pages: [
     // -------------------------------------------------------------------------
@@ -59,21 +59,24 @@ const story = {
           text: 'Close your eyes and sleep again',
           textEs: 'Cerrar los ojos y dormir de nuevo',
           textPtBR: 'Fechar os olhos e dormir de novo',
-          nextPage: 105,
+          nextPage: 105,
+
         },
         {
           id: '1b',
           text: 'Explore slowly',
           textEs: 'Explorar despacio',
           textPtBR: 'Explorar devagar',
-          nextPage: 2,
+          nextPage: 2,
+
         },
         {
           id: '1c',
           text: "Shout: 'Is anyone there?!'",
           textEs: '¡Gritar: "¡Hay alguien ahí?!"',
           textPtBR: "Gritar: 'Tem alguém aí?!'",
-          nextPage: 2,
+          nextPage: 2,
+
         },
       ],
     },
@@ -89,21 +92,24 @@ const story = {
           text: "Smile and say: 'Hi! I'm Papu!'",
           textEs: "Sonreír y decir: '¡Hola! Soy Papu'",
           textPtBR: "Sorrir e dizer: 'Oi! Sou o Papu!'",
-          nextPage: 3,
+          nextPage: 3,
+
         },
         {
           id: '2b',
           text: 'Start dancing',
           textEs: 'Ponerse a bailar',
           textPtBR: 'Começar a dançar',
-          nextPage: 4,
+          nextPage: 4,
+
         },
         {
           id: '2c',
           text: 'Run to the forest!',
           textEs: '¡Correr al bosque!',
           textPtBR: 'Correr pra floresta!',
-          nextPage: 5,
+          nextPage: 5,
+
         },
       ],
     },
@@ -119,7 +125,8 @@ const story = {
           text: 'Help in the kitchen',
           textEs: 'Ayudar en la cocina',
           textPtBR: 'Ajudar na cozinha',
-          nextPage: 6,
+          nextPage: 6,
+
         },
         {
           id: '3b',
@@ -134,7 +141,8 @@ const story = {
           text: 'Sit down and tell stories',
           textEs: 'Sentarse y contar historias',
           textPtBR: 'Sentar e contar histórias',
-          nextPage: 7,
+          nextPage: 7,
+
         },
       ],
     },
@@ -166,7 +174,8 @@ const story = {
           text: 'Go find inspiration in the forest',
           textEs: 'Ir a buscar inspiración al bosque',
           textPtBR: 'Ir buscar inspiração na floresta',
-          nextPage: 5,
+          nextPage: 5,
+
         },
       ],
     },
@@ -182,21 +191,24 @@ const story = {
           text: 'Go to the river',
           textEs: 'Ir al río',
           textPtBR: 'Ir para o rio',
-          nextPage: 8,
+          nextPage: 8,
+
         },
         {
           id: '5b',
           text: 'Enter the jungle',
           textEs: 'Entrar a la selva',
           textPtBR: 'Entrar na mata',
-          nextPage: 9,
+          nextPage: 9,
+
         },
         {
           id: '5c',
           text: 'Follow the mossy trail',
           textEs: 'Seguir el sendero de musgo',
           textPtBR: 'Seguir a trilha de musgo',
-          nextPage: 10,
+          nextPage: 10,
+
         },
       ],
     },

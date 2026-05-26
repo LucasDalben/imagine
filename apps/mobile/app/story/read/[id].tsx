@@ -33,6 +33,7 @@ export default function StoryReadScreen() {
   const [currentPageNumber, setCurrentPageNumber] = useState(startPage);
   const [endingType, setEndingType] = useState<'good' | 'bad'>('good');
   const [showEnding, setShowEnding] = useState(false);
+  const [choicesMade, setChoicesMade] = useState<string[]>([]);
 
   const fadeAnim = useRef(new Animated.Value(1)).current;
 
@@ -85,15 +86,19 @@ export default function StoryReadScreen() {
       : currentPage.text;
 
   const handleChoice = async (choice: StoryPage['choices'][0]) => {
+    const resolved = choice.conditions?.find((c) => choicesMade.includes(c.if));
+    const targetPageNumber = resolved ? resolved.nextPage : choice.nextPage;
+
+    setChoicesMade((prev) => [...prev, choice.id]);
     await updateProgress(story.id, currentPageNumber);
 
-    if (choice.nextPage === null) {
+    if (targetPageNumber === null) {
       const type = choice.endingType ?? 'good';
       fadeTransition(() => { setEndingType(type); setShowEnding(true); });
       return;
     }
 
-    const nextPage = story.pages.find((p) => p.pageNumber === choice.nextPage);
+    const nextPage = story.pages.find((p) => p.pageNumber === targetPageNumber);
     if (!nextPage) {
       const type = choice.endingType ?? 'good';
       fadeTransition(() => { setEndingType(type); setShowEnding(true); });
@@ -103,11 +108,11 @@ export default function StoryReadScreen() {
     if (nextPage.choices.length === 0) {
       // Landing on an ending page — show its text, then a 'The Story Ends' button
       const type = choice.endingType ?? 'good';
-      fadeTransition(() => { setEndingType(type); setCurrentPageNumber(choice.nextPage!); });
+      fadeTransition(() => { setEndingType(type); setCurrentPageNumber(targetPageNumber); });
       return;
     }
 
-    fadeTransition(() => setCurrentPageNumber(choice.nextPage!));
+    fadeTransition(() => setCurrentPageNumber(targetPageNumber));
   };
 
   const isEndingPage = currentPage.choices.length === 0;
@@ -139,8 +144,9 @@ export default function StoryReadScreen() {
               style={[styles.endedBtn, isGood ? styles.endedBtnGood : styles.endedBtnBad]}
               activeOpacity={0.8}
               onPress={() => {
-                setCurrentPageNumber(startPage);
+                setCurrentPageNumber(1);
                 setShowEnding(false);
+                setChoicesMade([]);
                 fadeAnim.setValue(1);
               }}
             >

@@ -21,14 +21,14 @@ import {
   HorizontalList,
   ThemeChip,
 } from '@/components/shared/ListComponents';
-import { MagicRing } from '@/components/shared/MagicRing';
-import { AnimatedBackground } from '@/components/shared/AnimatedBackground';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import {
   STORY_THEMES,
   THEME_EMOJIS,
   type StoryTheme,
   type Story,
 } from '@/data/stories';
+import { getStoryCoverSource, hasLocalCoverImage } from '@/data/storyLocalImages';
 import {
   fetchAllStories,
   fetchFeaturedStory,
@@ -36,7 +36,7 @@ import {
   fetchStoriesByTheme,
 } from '@/services/storiesService';
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 function FeaturedCard({ story }: { story: Story }) {
   const { t, i18n } = useTranslation();
@@ -62,15 +62,17 @@ function FeaturedCard({ story }: { story: Story }) {
       onPress={() => router.push(`/story/${story.id}`)}
     >
       <Image
-        source={{ uri: story.coverImage }}
+        source={getStoryCoverSource(story.id, story.coverImage) ?? { uri: '' }}
         style={StyleSheet.absoluteFill}
         contentFit="cover"
       />
 
       {/* Big emoji illustration */}
-      <View style={styles.featuredIllustration}>
-        <Text style={styles.featuredEmoji}>{story.emoji}</Text>
-      </View>
+      {!hasLocalCoverImage(story.id) && (
+        <View style={styles.featuredIllustration}>
+          <Text style={styles.featuredEmoji}>{story.emoji}</Text>
+        </View>
+      )}
 
       {/* Info overlay at bottom */}
       <LinearGradient
@@ -118,10 +120,21 @@ export default function HomeScreen() {
 
   const displayedStories = selectedTheme === 'all' ? allStories : storiesByTheme;
 
+  const videoPlayer = useVideoPlayer(require('@/assets/video_grama.mp4'), (player) => {
+    player.loop = true;
+    player.muted = true;
+    player.play();
+  });
+
   return (
     <View style={styles.container}>
-      <AnimatedBackground />
-      <MagicRing />
+      <VideoView
+        player={videoPlayer}
+        style={StyleSheet.absoluteFill}
+        contentFit="cover"
+        nativeControls={false}
+        pointerEvents="none"
+      />
       <SafeAreaView style={styles.safe} edges={['top']}>
       <ScrollView
         style={styles.scroll}
@@ -269,7 +282,7 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.lg,
   },
   featuredCard: {
-    height: 300,
+    height: height * 0.6,
     borderRadius: BorderRadius.xl,
     overflow: 'hidden',
     position: 'relative',

@@ -77,6 +77,7 @@
     "detail": {
       "start": "Empezar Historia",
       "continue": "Continuar donde lo dejé",
+      "restart": "Volver al principio",
       "theme": "Tema",
       "characters": "Personajes",
       "ageRange": "Edades",

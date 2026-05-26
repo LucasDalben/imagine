@@ -15,6 +15,7 @@ export interface StoryChoice {
   textPtBR: string;
   nextPage: number | null;
   endingType?: 'good' | 'bad';
+  conditions?: Array<{ if: string; nextPage: number }>;
 }
 
 export interface StoryPage {

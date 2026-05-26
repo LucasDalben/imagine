@@ -6,7 +6,8 @@
   "scripts": {
     "dev:api": "pnpm --dir apps/api start:dev",
     "build:api": "pnpm --dir apps/api build",
-    "seed:papu": "ts-node scripts/seed-papu-story.ts"
+    "seed:papu": "ts-node scripts/seed-papu-story.ts",
+    "seed:caju": "ts-node scripts/seed-caju-story.ts"
   },
   "keywords": [],
   "author": "Lucas Dalbem",
