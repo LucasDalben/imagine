@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
   Text,
@@ -19,8 +19,8 @@ import { type StoryPage, type Story } from '@/data/stories';
 import { fetchStoryById } from '@/services/storiesService';
 import { useReadingStore } from '@/stores/readingStore';
 
-const { width, height } = Dimensions.get('window');
-const IMAGE_HEIGHT = height * 0.6;
+const { height } = Dimensions.get('window');
+const IMAGE_HEIGHT = height * 0.5;
 
 export default function StoryReadScreen() {
   const { id, page: pageParam } = useLocalSearchParams<{ id: string; page: string }>();
@@ -29,6 +29,14 @@ export default function StoryReadScreen() {
   const [story, setStory] = useState<Story | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
+  const startPage = parseInt(pageParam ?? '1', 10) || 1;
+  const [currentPageNumber, setCurrentPageNumber] = useState(startPage);
+  const [endingType, setEndingType] = useState<'good' | 'bad'>('good');
+  const [showEnding, setShowEnding] = useState(false);
+  const [choicesMade, setChoicesMade] = useState<string[]>([]);
+
+  const fadeAnim = useRef(new Animated.Value(1)).current;
+
   useEffect(() => {
     fetchStoryById(id ?? '').then((s) => {
       setStory(s);
@@ -36,15 +44,17 @@ export default function StoryReadScreen() {
     });
   }, [id]);
 
-  const startPage = parseInt(pageParam ?? '1', 10);
-  const [currentPageNumber, setCurrentPageNumber] = useState(startPage || 1);
-  const [isEnded, setIsEnded] = useState(false);
-  const [isGoodEnding, setIsGoodEnding] = useState(false);
+  const fadeTransition = (callback: () => void) => {
+    Animated.timing(fadeAnim, { toValue: 0, duration: 180, useNativeDriver: true }).start(() => {
+      callback();
+      Animated.timing(fadeAnim, { toValue: 1, duration: 300, useNativeDriver: true }).start();
+    });
+  };
 
   if (loading) {
     return (
       <View style={styles.center}>
-        <Text style={Typography.h3}>Loading...</Text>
+        <Text style={styles.loadingText}>{t('common.loading')}</Text>
       </View>
     );
   }
@@ -52,16 +62,17 @@ export default function StoryReadScreen() {
   if (!story) {
     return (
       <View style={styles.center}>
-        <Text style={Typography.h3}>Story not found</Text>
+        <Text style={styles.loadingText}>Story not found</Text>
       </View>
     );
   }
 
-  const currentPage = story.pages.find((p) => p.pageNumber === currentPageNumber) ?? story.pages[0];
+  const currentPage: StoryPage | undefined =
+    story.pages.find((p) => p.pageNumber === currentPageNumber) ?? story.pages[0];
   if (!currentPage) {
     return (
       <View style={styles.center}>
-        <Text style={Typography.h3}>Page not found</Text>
+        <Text style={styles.loadingText}>Page not found</Text>
       </View>
     );
   }
@@ -75,46 +86,75 @@ export default function StoryReadScreen() {
       : currentPage.text;
 
   const handleChoice = async (choice: StoryPage['choices'][0]) => {
+    const resolved = choice.conditions?.find((c) => choicesMade.includes(c.if));
+    const targetPageNumber = resolved ? resolved.nextPage : choice.nextPage;
+
+    setChoicesMade((prev) => [...prev, choice.id]);
     await updateProgress(story.id, currentPageNumber);
 
-    if (choice.nextPage === null) {
-      setIsGoodEnding(!choice.isEnding);
-      setIsEnded(true);
+    if (targetPageNumber === null) {
+      const type = choice.endingType ?? 'good';
+      fadeTransition(() => { setEndingType(type); setShowEnding(true); });
       return;
     }
-    const nextPage = story.pages.find((p) => p.pageNumber === choice.nextPage);
+
+    const nextPage = story.pages.find((p) => p.pageNumber === targetPageNumber);
     if (!nextPage) {
-      setIsGoodEnding(true);
-      setIsEnded(true);
+      const type = choice.endingType ?? 'good';
+      fadeTransition(() => { setEndingType(type); setShowEnding(true); });
       return;
     }
-    setCurrentPageNumber(choice.nextPage);
+
+    if (nextPage.choices.length === 0) {
+      // Landing on an ending page — show its text, then a 'The Story Ends' button
+      const type = choice.endingType ?? 'good';
+      fadeTransition(() => { setEndingType(type); setCurrentPageNumber(targetPageNumber); });
+      return;
+    }
+
+    fadeTransition(() => setCurrentPageNumber(targetPageNumber));
   };
 
-  // Ended screen
-  if (isEnded) {
+  const isEndingPage = currentPage.choices.length === 0;
+  const isNarrativePage = currentPage.type === 'narrative' || currentPage.choices.length === 1;
+
+  // Ending screen
+  if (showEnding) {
+    const isGood = endingType === 'good';
     return (
       <View style={styles.container}>
         <LinearGradient
-          colors={isGoodEnding ? [Colors.primary, Colors.accentDark] : [Colors.surface, Colors.background]}
+          colors={
+            isGood
+              ? [Colors.endingGoodFrom, Colors.endingGoodTo]
+              : [Colors.endingBadFrom, Colors.endingBadTo]
+          }
           style={StyleSheet.absoluteFill}
         />
         <SafeAreaView style={styles.endedContent}>
-          <Text style={styles.endedEmoji}>{isGoodEnding ? '🌟' : '📖'}</Text>
-          <Text style={styles.endedTitle}>{t('story.read.theEnd')}</Text>
-          <Text style={styles.endedSubtitle}>{t('story.read.endSubtitle')}</Text>
+          <Text style={styles.endedEmoji}>{isGood ? '✨' : '🌑'}</Text>
+          <Text style={styles.endedTitle}>
+            {isGood ? t('story.read.endGoodTitle') : t('story.read.endBadTitle')}
+          </Text>
+          <Text style={styles.endedSubtitle}>
+            {isGood ? t('story.read.endGoodSubtitle') : t('story.read.endBadSubtitle')}
+          </Text>
           <View style={styles.endedActions}>
             <TouchableOpacity
-              style={styles.endedBtn}
+              style={[styles.endedBtn, isGood ? styles.endedBtnGood : styles.endedBtnBad]}
+              activeOpacity={0.8}
               onPress={() => {
                 setCurrentPageNumber(1);
-                setIsEnded(false);
+                setShowEnding(false);
+                setChoicesMade([]);
+                fadeAnim.setValue(1);
               }}
             >
               <Text style={styles.endedBtnText}>{t('story.read.playAgain')}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[styles.endedBtn, styles.endedBtnSecondary]}
+              activeOpacity={0.8}
               onPress={() => router.push('/(tabs)')}
             >
               <Text style={styles.endedBtnText}>{t('story.read.goHome')}</Text>
@@ -125,24 +165,27 @@ export default function StoryReadScreen() {
     );
   }
 
+  // Reading screen
   return (
     <View style={styles.container}>
-      {/* Story image area — 60% */}
+      {/* Image area */}
       <View style={styles.imageArea}>
-        <Image
-          source={{ uri: currentPage.backgroundImage }}
-          style={StyleSheet.absoluteFill}
-          contentFit="cover"
+        {currentPage.backgroundImage ? (
+          <Image
+            source={{ uri: currentPage.backgroundImage }}
+            style={StyleSheet.absoluteFill}
+            contentFit="cover"
+          />
+        ) : null}
+        <LinearGradient
+          colors={['transparent', Colors.background]}
+          style={styles.imageGradient}
+          start={{ x: 0, y: 0.4 }}
+          end={{ x: 0, y: 1 }}
         />
-
-        {/* Decorative elements */}
-        <View style={styles.decorCircle1} />
-        <View style={styles.decorCircle2} />
-
-        {/* Page emoji illustration */}
-        <Text style={styles.pageEmoji}>{currentPage.emoji}</Text>
-
-        {/* Top nav */}
+        <Animated.Text style={[styles.pageEmoji, { opacity: fadeAnim }]}>
+          {currentPage.emoji}
+        </Animated.Text>
         <SafeAreaView style={styles.topNav} edges={['top']}>
           <TouchableOpacity style={styles.navBtn} onPress={() => router.back()}>
             <Ionicons name="close" size={22} color={Colors.textPrimary} />
@@ -156,59 +199,61 @@ export default function StoryReadScreen() {
         </SafeAreaView>
       </View>
 
-      {/* Bottom panel — 40% */}
+      {/* Bottom panel */}
       <View style={styles.bottomPanel}>
         <LinearGradient
           colors={[Colors.surface, Colors.background]}
           style={StyleSheet.absoluteFill}
         />
-
         <ScrollView
           contentContainerStyle={styles.bottomContent}
           showsVerticalScrollIndicator={false}
         >
-          {/* Page text */}
-          <Text style={styles.pageText}>{pageText}</Text>
+          <Animated.View style={{ opacity: fadeAnim }}>
+            <Text style={styles.pageText}>{pageText}</Text>
 
-          {/* Choices */}
-          <Text style={styles.chooseLabel}>{t('story.read.choose')}</Text>
-          <View style={styles.choicesContainer}>
-            {currentPage.choices.map((choice, index) => {
-              const choiceText =
-                lang === 'es'
-                  ? choice.textEs
-                  : lang === 'pt-BR'
-                  ? choice.textPtBR
-                  : choice.text;
-              return (
-                <TouchableOpacity
-                  key={choice.id}
-                  style={styles.choiceBtn}
-                  activeOpacity={0.85}
-                  onPress={() => handleChoice(choice)}
-                >
-                  <LinearGradient
-                    colors={
-                      index === 0
-                        ? [Colors.primary, Colors.primaryDark]
-                        : index === 1
-                        ? [Colors.accentDark, Colors.blue[900]]
-                        : [Colors.surfaceElevated, Colors.surfaceHighlight]
-                    }
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
-                    style={[StyleSheet.absoluteFill, { borderRadius: BorderRadius.lg }]}
-                  />
-                  <View style={styles.choiceBtnInner}>
-                    <View style={styles.choiceNumber}>
-                      <Text style={styles.choiceNumberText}>{index + 1}</Text>
-                    </View>
-                    <Text style={styles.choiceText}>{choiceText}</Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+            {isEndingPage ? (
+              <TouchableOpacity
+                style={styles.continueBtn}
+                activeOpacity={0.75}
+                onPress={() => setShowEnding(true)}
+              >
+                <Text style={styles.continueBtnText}>{t('story.read.theEnd')}</Text>
+              </TouchableOpacity>
+            ) : isNarrativePage ? (
+              <TouchableOpacity
+                style={styles.continueBtn}
+                activeOpacity={0.75}
+                onPress={() => currentPage.choices[0] && handleChoice(currentPage.choices[0])}
+              >
+                <Text style={styles.continueBtnText}>{t('story.read.continue')}</Text>
+                <Ionicons name="arrow-forward" size={15} color={Colors.textMuted} style={{ marginLeft: 8 }} />
+              </TouchableOpacity>
+            ) : (
+              <View style={styles.choicesContainer}>
+                <Text style={styles.chooseLabel}>{t('story.read.choose')}</Text>
+                {currentPage.choices.map((choice) => {
+                  const choiceText =
+                    lang === 'es'
+                      ? choice.textEs
+                      : lang === 'pt-BR'
+                      ? choice.textPtBR
+                      : choice.text;
+                  return (
+                    <TouchableOpacity
+                      key={choice.id}
+                      style={styles.choiceBtn}
+                      activeOpacity={0.7}
+                      onPress={() => handleChoice(choice)}
+                    >
+                      <Text style={styles.choiceArrow}>{'›'}</Text>
+                      <Text style={styles.choiceText}>{choiceText}</Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </View>
+            )}
+          </Animated.View>
         </ScrollView>
       </View>
     </View>
@@ -217,35 +262,28 @@ export default function StoryReadScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: Colors.background },
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  center: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.background,
+  },
+  loadingText: { ...Typography.h3, color: Colors.textPrimary },
 
-  // Image area
   imageArea: {
     height: IMAGE_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'relative',
     overflow: 'hidden',
   },
-  decorCircle1: {
+  imageGradient: {
     position: 'absolute',
-    width: 200,
-    height: 200,
-    borderRadius: 100,
-    backgroundColor: 'rgba(255,255,255,0.05)',
-    top: -60,
-    right: -60,
-  },
-  decorCircle2: {
-    position: 'absolute',
-    width: 160,
+    left: 0,
+    right: 0,
+    bottom: 0,
     height: 160,
-    borderRadius: 80,
-    backgroundColor: 'rgba(255,255,255,0.04)',
-    bottom: -40,
-    left: -40,
   },
-  pageEmoji: { fontSize: 130 },
+  pageEmoji: { fontSize: 100 },
   topNav: {
     position: 'absolute',
     top: 0,
@@ -270,55 +308,78 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 6,
   },
-  pageIndicatorText: { ...Typography.caption, fontWeight: '700' },
+  pageIndicatorText: { ...Typography.caption, fontWeight: '700', color: Colors.textPrimary },
 
-  // Bottom panel
   bottomPanel: {
     flex: 1,
     borderTopLeftRadius: BorderRadius.xl,
     borderTopRightRadius: BorderRadius.xl,
-    marginTop: -20,
+    marginTop: -24,
     overflow: 'hidden',
   },
   bottomContent: {
     padding: Spacing.lg,
-    paddingBottom: Spacing.xl,
-    gap: Spacing.md,
+    paddingBottom: Spacing.xxl,
   },
   pageText: {
     ...Typography.body,
-    lineHeight: 26,
+    fontSize: 16,
+    lineHeight: 28,
     color: Colors.textSecondary,
+    marginBottom: Spacing.lg,
   },
+
+  continueBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.border,
+    borderRadius: BorderRadius.full,
+    paddingVertical: 15,
+    paddingHorizontal: Spacing.lg,
+    backgroundColor: 'rgba(255,255,255,0.03)',
+  },
+  continueBtnText: {
+    ...Typography.button,
+    fontSize: 15,
+    color: Colors.textMuted,
+    letterSpacing: 0.5,
+  },
+
   chooseLabel: {
-    ...Typography.h4,
-    marginBottom: -4,
+    ...Typography.caption,
+    color: Colors.textDisabled,
+    letterSpacing: 2,
+    textTransform: 'uppercase',
+    marginBottom: Spacing.sm,
   },
   choicesContainer: { gap: Spacing.sm },
   choiceBtn: {
-    borderRadius: BorderRadius.lg,
-    overflow: 'hidden',
-    minHeight: 58,
-    justifyContent: 'center',
-  },
-  choiceBtnInner: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: Spacing.md,
-    gap: 12,
+    backgroundColor: Colors.surfaceElevated,
+    borderRadius: BorderRadius.lg,
+    paddingVertical: 16,
+    paddingHorizontal: Spacing.md,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    gap: 10,
   },
-  choiceNumber: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    alignItems: 'center',
-    justifyContent: 'center',
+  choiceArrow: {
+    fontSize: 20,
+    color: Colors.textDisabled,
+    width: 14,
+    lineHeight: 22,
   },
-  choiceNumberText: { ...Typography.buttonSmall, fontSize: 13 },
-  choiceText: { ...Typography.body, flex: 1, fontWeight: '500' },
+  choiceText: {
+    ...Typography.body,
+    flex: 1,
+    color: Colors.textPrimary,
+    fontWeight: '500',
+    lineHeight: 22,
+  },
 
-  // Ended screen
   endedContent: {
     flex: 1,
     alignItems: 'center',
@@ -326,19 +387,38 @@ const styles = StyleSheet.create({
     padding: Spacing.xl,
     gap: Spacing.md,
   },
-  endedEmoji: { fontSize: 100, marginBottom: Spacing.md },
-  endedTitle: { ...Typography.h1, textAlign: 'center' },
-  endedSubtitle: { ...Typography.body, color: Colors.textSecondary, textAlign: 'center' },
-  endedActions: { flexDirection: 'row', gap: Spacing.md, marginTop: Spacing.lg },
+  endedEmoji: { fontSize: 96, marginBottom: Spacing.md },
+  endedTitle: { ...Typography.h2, textAlign: 'center', color: Colors.textPrimary },
+  endedSubtitle: {
+    ...Typography.body,
+    color: 'rgba(255,255,255,0.65)',
+    textAlign: 'center',
+    lineHeight: 24,
+  },
+  endedActions: {
+    flexDirection: 'row',
+    gap: Spacing.md,
+    marginTop: Spacing.lg,
+    width: '100%',
+  },
   endedBtn: {
     flex: 1,
-    backgroundColor: 'rgba(255,255,255,0.2)',
     borderRadius: BorderRadius.full,
     paddingVertical: 14,
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.3)',
   },
-  endedBtnSecondary: { backgroundColor: 'rgba(0,0,0,0.2)' },
-  endedBtnText: { ...Typography.button },
+  endedBtnGood: {
+    backgroundColor: 'rgba(255,255,255,0.18)',
+    borderColor: 'rgba(255,255,255,0.35)',
+  },
+  endedBtnBad: {
+    backgroundColor: 'rgba(255,255,255,0.07)',
+    borderColor: 'rgba(255,255,255,0.18)',
+  },
+  endedBtnSecondary: {
+    backgroundColor: 'rgba(0,0,0,0.25)',
+    borderColor: 'rgba(255,255,255,0.12)',
+  },
+  endedBtnText: { ...Typography.button, color: Colors.textPrimary },
 });

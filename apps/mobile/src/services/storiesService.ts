@@ -30,7 +30,7 @@ interface StoryRow {
   is_new: boolean;
   is_featured: boolean;
   download_size_mb: number;
-  story_pages: PageRow[];
+  pages: StoryPage[];
 }
 
 interface PageRow {
@@ -101,21 +101,13 @@ function mapStory(row: StoryRow): Story {
     isNew: row.is_new,
     isFeatured: row.is_featured,
     downloadSizeMB: row.download_size_mb,
-    pages: (row.story_pages ?? [])
-      .map(mapPage)
-      .sort((a, b) => a.pageNumber - b.pageNumber),
+    pages: (row.pages ?? []).sort((a, b) => a.pageNumber - b.pageNumber),
   };
 }
 
 // ─── Query helper ─────────────────────────────────────────────────────────────
 
-const STORY_SELECT = `
-  *,
-  story_pages (
-    *,
-    story_choices (*)
-  )
-`;
+const STORY_SELECT = '*';
 
 // ─── Public API ───────────────────────────────────────────────────────────────
 

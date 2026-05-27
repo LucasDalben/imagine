@@ -4,6 +4,7 @@ import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { Colors, BorderRadius, Typography, Spacing } from '@/theme';
 import type { Story } from '@/data/stories';
+import { getStoryCoverSource, hasLocalCoverImage } from '@/data/storyLocalImages';
 import { useTranslation } from 'react-i18next';
 
 interface StoryCardProps {
@@ -30,15 +31,17 @@ export function StoryCard({ story, size = 'md' }: StoryCardProps) {
       onPress={() => router.push(`/story/${story.id}`)}
     >
       <Image
-        source={{ uri: story.coverImage }}
+        source={getStoryCoverSource(story.id, story.coverImage) ?? { uri: '' }}
         style={StyleSheet.absoluteFill}
         contentFit="cover"
       />
 
       {/* Emoji illustration */}
-      <View style={styles.emojiContainer}>
-        <Text style={[styles.emoji, cardStyle.emoji]}>{story.emoji}</Text>
-      </View>
+      {!hasLocalCoverImage(story.id) && (
+        <View style={styles.emojiContainer}>
+          <Text style={[styles.emoji, cardStyle.emoji]}>{story.emoji}</Text>
+        </View>
+      )}
 
       {/* Bottom info */}
       <View style={styles.info}>
