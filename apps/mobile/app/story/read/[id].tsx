@@ -41,6 +41,12 @@ export default function StoryReadScreen() {
     fetchStoryById(id ?? '').then((s) => {
       setStory(s);
       setLoading(false);
+      if (s) {
+        const urls = s.pages
+          .map((p) => p.image_url ?? p.backgroundImage)
+          .filter((u): u is string => Boolean(u));
+        if (urls.length > 0) Image.prefetch(urls);
+      }
     });
   }, [id]);
 
@@ -169,35 +175,40 @@ export default function StoryReadScreen() {
   return (
     <View style={styles.container}>
       {/* Image area */}
-      <View style={styles.imageArea}>
-        {currentPage.backgroundImage ? (
-          <Image
-            source={{ uri: currentPage.backgroundImage }}
-            style={StyleSheet.absoluteFill}
-            contentFit="cover"
+      <SafeAreaView edges={['top']} style={styles.imageWrapper}>
+        <View style={styles.imageArea}>
+          {(currentPage.image_url || currentPage.backgroundImage) ? (
+            <Image
+              source={{ uri: currentPage.image_url ?? currentPage.backgroundImage }}
+              style={StyleSheet.absoluteFill}
+              contentFit="cover"
+              cachePolicy="memory-disk"
+              transition={200}
+            />
+          ) : (
+            <Animated.Text style={[styles.pageEmoji, { opacity: fadeAnim }]}>
+              {currentPage.emoji}
+            </Animated.Text>
+          )}
+          <LinearGradient
+            colors={['transparent', Colors.background]}
+            style={styles.imageGradient}
+            start={{ x: 0, y: 0.4 }}
+            end={{ x: 0, y: 1 }}
           />
-        ) : null}
-        <LinearGradient
-          colors={['transparent', Colors.background]}
-          style={styles.imageGradient}
-          start={{ x: 0, y: 0.4 }}
-          end={{ x: 0, y: 1 }}
-        />
-        <Animated.Text style={[styles.pageEmoji, { opacity: fadeAnim }]}>
-          {currentPage.emoji}
-        </Animated.Text>
-        <SafeAreaView style={styles.topNav} edges={['top']}>
-          <TouchableOpacity style={styles.navBtn} onPress={() => router.back()}>
-            <Ionicons name="close" size={22} color={Colors.textPrimary} />
-          </TouchableOpacity>
-          <View style={styles.pageIndicator}>
-            <Text style={styles.pageIndicatorText}>
-              {t('story.read.page')} {currentPageNumber}
-            </Text>
+          <View style={styles.topNav}>
+            <TouchableOpacity style={styles.navBtn} onPress={() => router.back()}>
+              <Ionicons name="close" size={22} color={Colors.textPrimary} />
+            </TouchableOpacity>
+            <View style={styles.pageIndicator}>
+              <Text style={styles.pageIndicatorText}>
+                {t('story.read.page')} {currentPageNumber}
+              </Text>
+            </View>
+            <View style={{ width: 42 }} />
           </View>
-          <View style={{ width: 42 }} />
-        </SafeAreaView>
-      </View>
+        </View>
+      </SafeAreaView>
 
       {/* Bottom panel */}
       <View style={styles.bottomPanel}>
@@ -270,11 +281,19 @@ const styles = StyleSheet.create({
   },
   loadingText: { ...Typography.h3, color: Colors.textPrimary },
 
+  imageWrapper: {
+    marginHorizontal: 12,
+    marginTop: 8,
+  },
   imageArea: {
     height: IMAGE_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
+    borderTopLeftRadius: BorderRadius.xl,
+    borderTopRightRadius: BorderRadius.xl,
+    borderBottomLeftRadius: BorderRadius.lg,
+    borderBottomRightRadius: BorderRadius.lg,
   },
   imageGradient: {
     position: 'absolute',
@@ -286,7 +305,7 @@ const styles = StyleSheet.create({
   pageEmoji: { fontSize: 100 },
   topNav: {
     position: 'absolute',
-    top: 0,
+    top: Spacing.sm,
     left: 0,
     right: 0,
     flexDirection: 'row',

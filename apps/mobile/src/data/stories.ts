@@ -23,8 +23,9 @@ export interface StoryPage {
   text: string;
   textEs: string;
   textPtBR: string;
-  backgroundImage: string;
-  emoji: string;
+  backgroundImage?: string;
+  image_url?: string;
+  emoji?: string;
   choices: StoryChoice[];
   /** 'narrative' = single tap Continue, 'choice' = 2-3 branching options */
   type?: 'narrative' | 'choice';
