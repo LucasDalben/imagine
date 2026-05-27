@@ -41,7 +41,7 @@ const story = {
   characters: ['Caju', 'Estrela', 'Beto', 'Isabela', 'Professor Almeida', 'Mestre Mago Kashew'],
   age_min: 7,
   age_max: 99,
-  total_pages: 30,
+  total_pages: 44,
   reading_level: 'beginner',
   cover_image: null,
   emoji: '🎒',
@@ -98,7 +98,7 @@ const story = {
           text: 'Go have breakfast now',
           textEs: 'Ir a desayunar ahora',
           textPtBR: 'Ir tomar café agora',
-          nextPage: 5,
+          nextPage: 37,
         },
       ],
     },
@@ -260,7 +260,7 @@ const story = {
           text: "Into the Marathon!",
           textEs: "¡A la Maratón!",
           textPtBR: "Pra dentro da Maratona!",
-          nextPage: 21,
+          nextPage: 38,
         },
       ],
     },
@@ -284,7 +284,7 @@ const story = {
           text: 'Começar a partida',
           textEs: 'Começar a partida',
           textPtBR: 'Começar a partida',
-          nextPage: 16,
+          nextPage: 14,
         },
       ],
     },
@@ -302,7 +302,7 @@ const story = {
           text: 'Começar a partida',
           textEs: 'Começar a partida',
           textPtBR: 'Começar a partida',
-          nextPage: 16,
+          nextPage: 14,
         },
       ],
     },
@@ -325,7 +325,7 @@ const story = {
           text: 'Continuar a partida',
           textEs: 'Continuar a partida',
           textPtBR: 'Continuar a partida',
-          nextPage: 17,
+          nextPage: 39,
         },
       ],
     },
@@ -343,14 +343,14 @@ const story = {
           text: 'Sacrificar a Torre para salvar o Cavalo',
           textEs: 'Sacrificar a Torre para salvar o Cavalo',
           textPtBR: 'Perder a Torre para salvar o Cavalo',
-          nextPage: 18,
+          nextPage: 16,
         },
         {
           id: '17b',
           text: 'Recuar o Cavalo para lugar seguro',
           textEs: 'Recuar o Cavalo para lugar seguro',
           textPtBR: 'Recuar o Cavalo para lugar seguro',
-          nextPage: 19,
+          nextPage: 17,
         },
       ],
     },
@@ -368,7 +368,7 @@ const story = {
           text: 'Próxima etapa: atividade física!',
           textEs: 'Próxima etapa: atividade física!',
           textPtBR: 'Próxima etapa: atividade física!',
-          nextPage: 20,
+          nextPage: 40,
         },
       ],
     },
@@ -386,7 +386,7 @@ const story = {
           text: 'Próxima etapa: atividade física!',
           textEs: 'Próxima etapa: atividade física!',
           textPtBR: 'Próxima etapa: atividade física!',
-          nextPage: 20,
+          nextPage: 41,
         },
       ],
     },
@@ -409,7 +409,7 @@ const story = {
           text: 'Pra pista!',
           textEs: 'Pra pista!',
           textPtBR: 'Pra pista!',
-          nextPage: 22,
+          nextPage: 19,
         },
       ],
     },
@@ -427,14 +427,14 @@ const story = {
           text: 'Respirar fundo e terminar no ritmo',
           textEs: 'Respirar fundo e terminar no ritmo',
           textPtBR: 'Respirar fundo e manter o ritmo até o final',
-          nextPage: 24,
+          nextPage: 22,
         },
         {
           id: '22b',
           text: 'A barriga está falando mais alto que as pernas',
           textEs: 'A barriga está falando mais alto que as pernas',
           textPtBR: 'Correr o mais rápido possível, assim ficaria na frente no início!',
-          nextPage: 23,
+          nextPage: 21,
         },
       ],
     },
@@ -452,7 +452,7 @@ const story = {
           text: 'Ser honesto: pedir uma pausa ao Professor',
           textEs: 'Ser honesto: pedir uma pausa ao Professor',
           textPtBR: 'Droga, por que não me preparei melhor no café da manhã?',
-          nextPage: 26,
+          nextPage: 27,
         },
       ],
     },
@@ -464,7 +464,6 @@ const story = {
       textEs: "No terceiro agachamento a cabeça rodou. Não muito, mas o suficiente pra Caju parar, segurar o joelho e respirar. Beto veio correndo. 'Ei, tá bem?' Caju olhou pro cronômetro ainda rodando. Ainda dava pra tentar. A barriga vazia estava cobrando tudo que ele não tinha colocado nela de manhã. Faltava uma última decisão.",
       textPtBR: "Ele correu o mais rápido que pôde, sentiu o gosto da vitória, viu os competidores ficando para tras, mas começou a sentir o cansaço batendo, e antes da corrida acabar, ele não aguentou o ritmo e acabou ficando em terceiro lugar.",
       emoji: '😵',
-      isEnding: true,
       choices: [
         {
           id: '23b',
@@ -489,7 +488,7 @@ const story = {
           text: 'Última etapa: artes!',
           textEs: 'Última etapa: artes!',
           textPtBR: 'Já assisti todos os episódios de Dragon Ball, isso será fácil, OSS!',
-          nextPage: 28,
+          nextPage: 42,
         },
       ],
     },
@@ -503,17 +502,17 @@ const story = {
       choices: [
         {
           id: '24a',
-          text: 'Última etapa: artes!',
-          textEs: 'Última etapa: artes!',
-          textPtBR: 'Ir com tudo, não tenho nada a perder! Seguro forte o kimino e começo a empurrar ele para fora do tatame!',
-          nextPage: 28,
+          text: 'Ir com tudo!',
+          textEs: 'Ir com tudo!',
+          textPtBR: 'Ir com tudo, não tenho nada a perder! Seguro forte o kimono e começo a empurrar ele para fora do tatame!',
+          nextPage: 24,
         },
         {
-          id: '24a',
-          text: 'Última etapa: artes!',
-          textEs: 'Última etapa: artes!',
+          id: '24b',
+          text: 'Usar a técnica!',
+          textEs: 'Usar a técnica!',
           textPtBR: 'Faço a pegada no kimono, olhos atentos, e tento desequilibrar ele para o lado, mesmo ele sendo mais forte e vindo para cima de mim.',
-          nextPage: 28,
+          nextPage: 25,
         },
       ],
     },
@@ -526,14 +525,13 @@ const story = {
       textEs: "Caju empurrou. No último agachamento as pernas simplesmente pararam no meio do movimento. Ele não caiu de vez, mas o joelho tocou o chão e ficou ali por um segundo, cabeça baixa, pátio em silêncio. O Professor Almeida se aproximou devagar. 'Descansa, Caju. A Maratona é longa e você ainda tem as artes.' Derrota na prova física. Mas havia uma etapa pela frente, e ela não dependia de perna.",
       textPtBR: "Caju empurrou, empurrou e o oponente aproveitou isso para aplicar um forte golpe, como Caju estava fazendo muita força e o oponente usou isso a seu favor para desequilibrar Caju, ele acabou caindo no chão, perdendo a prova física.",
       emoji: '😞',
-      isEnding: true,
       choices: [
         {
           id: '25a',
           text: 'Última etapa: artes!',
           textEs: 'Última etapa: artes!',
           textPtBR: 'É... eu acho esqueci os princípios das artes marciais!',
-          nextPage: 28,
+          nextPage: 26,
         },
       ],
     },
@@ -550,7 +548,7 @@ const story = {
           text: 'Última etapa: artes!',
           textEs: 'Última etapa: artes!',
           textPtBR: 'Huhuw! Eu venci! Não acredito!',
-          nextPage: 28,
+          nextPage: 26,
         },
       ],
     },
@@ -573,7 +571,7 @@ const story = {
           text: 'Tirar o Pincel especial da mochila',
           textEs: 'Tirar o Pincel especial da mochila',
           textPtBR: 'Tirar o Pincel especial da mochila',
-          nextPage: 29,
+          nextPage: 43,
         },
       ],
     },
@@ -597,59 +595,58 @@ const story = {
 
     {
       pageNumber: 28,
-      text: "O Professor Almeida anunciou a última etapa: 'ARTES!' A turma seguiu pro corredor da sala de arte. Isabela apareceu do lado de Caju. 'Misturou as cores na paleta primeiro, né?' Ele assentiu. Dentro, cada aluno recebeu uma tela em branco, tintas e pincéis. O tema era 'Seu dia até agora.' Caju olhou pros pincéis que estavam na mesa. Depois olhou pra mochila.",
-      textEs: "O Professor Almeida anunciou a última etapa: 'ARTES!' A turma seguiu pro corredor da sala de arte. Isabela apareceu do lado de Caju. 'Misturou as cores na paleta primeiro, né?' Ele assentiu. Dentro, cada aluno recebeu uma tela em branco, tintas e pincéis. O tema era 'Seu dia até agora.' Caju olhou pros pincéis que estavam na mesa. Depois olhou pra mochila.",
+      text: "Alright — the Special Brush was right there in the bag, wrapped up carefully. This was the last challenge. Caju held it for a second before opening the paint jars. He had prepared for this. He knew he could win.",
+      textEs: "Bien — el Pincel Especial estaba ahí en la mochila, bien envuelto. Era el último desafío. Caju lo sostuvo un segundo antes de abrir los frascos de pintura. Se había preparado para esto. Sabía que podía ganar.",
       textPtBR: "Certo, eu tenho o Pincel Especial aqui na mochila, essa é a última etapa, eu preciso conseguir! Eu me preparei pra isso, eu sei que posso vencer!",
       emoji: '🎨',
       choices: [
         {
           id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+          text: 'Arte realista',
+          textEs: 'Arte realista',
           textPtBR: 'Fazer um retrato realista com muitos detalhes incríveis.',
           nextPage: 29,
         },
-             {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+        {
+          id: '28b',
+          text: 'Arte criativa',
+          textEs: 'Arte criativa',
           textPtBR: 'Deixar o seu coração falar pelo pincel, e entregar uma arte cheia de sentimento.',
-          nextPage: 29,
+          nextPage: 30,
         },
       ],
     },
 
     {
       pageNumber: 29,
-      text: "O Professor Almeida anunciou a última etapa: 'ARTES!' A turma seguiu pro corredor da sala de arte. Isabela apareceu do lado de Caju. 'Misturou as cores na paleta primeiro, né?' Ele assentiu. Dentro, cada aluno recebeu uma tela em branco, tintas e pincéis. O tema era 'Seu dia até agora.' Caju olhou pros pincéis que estavam na mesa. Depois olhou pra mochila.",
-      textEs: "O Professor Almeida anunciou a última etapa: 'ARTES!' A turma seguiu pro corredor da sala de arte. Isabela apareceu do lado de Caju. 'Misturou as cores na paleta primeiro, né?' Ele assentiu. Dentro, cada aluno recebeu uma tela em branco, tintas e pincéis. O tema era 'Seu dia até agora.' Caju olhou pros pincéis que estavam na mesa. Depois olhou pra mochila.",
+      text: "Mestre Mago Kashew stood before Caju's canvas for a long moment. 'Your work is beautiful,' he said quietly, 'but it didn't move me enough to give you first place.' Caju nodded slowly. He had painted carefully, precisely. Maybe too precisely.",
+      textEs: "El Mestre Mago Kashew se quedó frente al cuadro de Caju por un buen momento. 'Tu trabajo es hermoso', dijo en voz baja, 'pero no me llegó al corazón como para darte el primer lugar.' Caju asintió despacio. Había pintado con cuidado, con precisión. Quizás demasiada.",
       textPtBR: "Muito bem, o seu quadro ficou lindo, mas não me tocou ao ponto de te dar o Primeiro Lugar.",
       emoji: '🎨',
-      isEnding: true,
       choices: [
         {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+          id: '29a',
+          text: 'Continuar',
+          textEs: 'Continuar',
           textPtBR: 'Cheguei tão perto...',
-          nextPage: 29,
+          nextPage: 31,
         },
       ],
     },
 
         {
       pageNumber: 30,
-      text: "O Professor Almeida anunciou a última etapa: 'ARTES!' A turma seguiu pro corredor da sala de arte. Isabela apareceu do lado de Caju. 'Misturou as cores na paleta primeiro, né?' Ele assentiu. Dentro, cada aluno recebeu uma tela em branco, tintas e pincéis. O tema era 'Seu dia até agora.' Caju olhou pros pincéis que estavam na mesa. Depois olhou pra mochila.",
-      textEs: "O Professor Almeida anunciou a última etapa: 'ARTES!' A turma seguiu pro corredor da sala de arte. Isabela apareceu do lado de Caju. 'Misturou as cores na paleta primeiro, né?' Ele assentiu. Dentro, cada aluno recebeu uma tela em branco, tintas e pincéis. O tema era 'Seu dia até agora.' Caju olhou pros pincéis que estavam na mesa. Depois olhou pra mochila.",
+      text: "Mestre Mago Kashew stopped in front of Caju's canvas and didn't move for a full minute. The whole room went quiet. Then he turned around slowly. 'This one. This is the one that reached me.' He pointed at Caju. 'First place in Arts.' The class erupted.",
+      textEs: "El Mestre Mago Kashew se detuvo frente al cuadro de Caju y no se movió por un minuto entero. Toda la sala se quedó en silencio. Luego giró despacio. 'Este. Este es el que me llegó.' Señaló a Caju. 'Primer lugar en Artes.' La clase estalló.",
       textPtBR: "É isso! A sua arte é a mais criativa, a mais original, a que mais se destacou e me tocou, meus parabéns Caju, te dou o Primeiro Lugar em Artes!",
       emoji: '🎨',
       choices: [
         {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+          id: '30a',
+          text: 'Celebrar!',
+          textEs: 'Celebrar!',
           textPtBR: 'Eu sabia que era disso que a arte se tratava, não é só técnica, é sentimento, é expressão, obrigado professora!',
-          nextPage: 29,
+          nextPage: 31,
         },
       ],
     },
@@ -658,17 +655,17 @@ const story = {
     // ─── P29: O Pincel Especial ───────────────────────────────────────────────
     {
       pageNumber: 31,
-      text: "Caju desenrolou o pano devagar e tirou o Pincel. O mesmo que tinha guardado com tanto cuidado de manhã. Ficou segurando por um segundo antes de abrir os potes de tinta. Misturou as cores na paleta como a Isabela tinha ensinado. A primeira pincelada foi com confiança. A segunda também. O que apareceu na tela surpreendeu até ele mesmo. O Mestre Mago Kashew passou pela sala devagar, olhando os trabalhos. Quando chegou na tela de Caju, parou. Ficou ali por um tempo bom. Depois virou, olhou pra ele e sorriu.",
-      textEs: "Caju desenrolou o pano devagar e tirou o Pincel. O mesmo que tinha guardado com tanto cuidado de manhã. Ficou segurando por um segundo antes de abrir os potes de tinta. Misturou as cores na paleta como a Isabela tinha ensinado. A primeira pincelada foi com confiança. A segunda também. O que apareceu na tela surpreendeu até ele mesmo. O Mestre Mago Kashew passou pela sala devagar, olhando os trabalhos. Quando chegou na tela de Caju, parou. Ficou ali por um tempo bom. Depois virou, olhou pra ele e sorriu.",
+      text: "Everyone gathered in the main hall. The principal took the stage and announced the overall champion of the Mega Marathon. The crowd went wild. Friends lifted him up, medals flashed under the lights, and for a moment Caju forgot he was even tired.",
+      textEs: "Todos se reunieron en el gran salón. El director subió al escenario y anunció al campeón general de la Mega Maratón. La multitud enloqueció. Los amigos lo levantaron en brazos, las medallas brillaron bajo las luces y por un momento Caju olvidó que estaba cansado.",
       textPtBR: "Todos se reuniram no grande salão, e então anunciaram Juca como o grande vencedor da Maratona! Todos aplaudiram, o diretor entregou a medalha e o troféu, os amigos levantaram Juca e celebraram como se tivessem vencido uma Copa do Mundo de Futebol!",
       emoji: '🖌️',
       choices: [
                {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+          id: '31a',
+          text: 'Continuar',
+          textEs: 'Continuar',
           textPtBR: 'Esse é o melhor dia da minha vida!',
-          nextPage: 29,
+          nextPage: 44,
         },
       ],
     },
@@ -676,42 +673,42 @@ const story = {
     // ─── P30: Criativo, Mas Sem o Pincel ─────────────────────────────────────
     {
       pageNumber: 32,
-      text: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
-      textEs: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
+      text: "Most students had already left. Caju was heading for the gate when the principal called out: 'Caju! Wait! There's someone who wants to see you — follow me to my office. He doesn't want to be seen by the others.'",
+      textEs: "La mayoría de los alumnos ya se habían ido. Caju se dirigía a la salida cuando el director lo llamó: '¡Caju! ¡Espera! Hay alguien que quiere verte — sígueme a mi oficina. No quiere que los demás lo vean.'",
       textPtBR: "A maioria dos alunos e funcionários já tinham ido embora, Juca terminou de se despedir de seus amigos e começou a seguir para a saída, quando o diretor o chamou 'Juca! Espere! Tem alguem que gostaria de ve-lo, me siga até a minha sala, pois ele não quer ser visto pelos outros.'",
       emoji: '😔',
       choices: [
-             {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+        {
+          id: '32a',
+          text: 'Seguir o diretor',
+          textEs: 'Seguir o diretor',
           textPtBR: 'Seguir o diretor para a sala dele.',
-          nextPage: 29,
+          nextPage: 34,
         },
-             {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+        {
+          id: '32b',
+          text: 'Ir para casa',
+          textEs: 'Ir para casa',
           textPtBR: 'Ir embora para a casa',
-          nextPage: 29,
+          nextPage: 33,
         },
       ],
     },
 
     {
       pageNumber: 33,
-      text: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
-      textEs: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
+      text: "Caju arrived home and laid the medal on the kitchen table. His parents' eyes lit up. Dinner was warm and the stories flowed — the chess fork, the judo throw, the painting. But that night, as he lay in bed, a quiet thought surfaced: had he taken the right path?",
+      textEs: "Caju llegó a casa y puso la medalla sobre la mesa de la cocina. Los ojos de sus padres brillaron. La cena fue cálida y las historias fluyeron — el tenedor en el ajedrez, el derribo en el judo, la pintura. Pero esa noche, mientras estaba acostado, un pensamiento silencioso apareció: ¿había tomado el camino correcto?",
       textPtBR: "Juca chegou em casa, mostrou para seus pais a medalha e o troféu, e contou tudo o que aconteceu na Maratona, ele estava tão feliz que não conseguia parar de falar, e seus pais ficaram muito orgulhosos dele, e disseram que ele tinha se saído muito bem, comeram uma bela parmegiana e tiveram uma noite muito feliz juntos!",
       emoji: '😔',
       isEnding: true,
       choices: [
-             {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+        {
+          id: '33a',
+          text: 'Fim',
+          textEs: 'Fim',
           textPtBR: 'Indo dormir, Juca sentiu que algo estava faltando, e se perguntou se realmente escolheu o caminho certo.',
-          nextPage: 29,
+          nextPage: 33,
         }
       ],
     },
@@ -719,52 +716,209 @@ const story = {
     
     {
       pageNumber: 34,
-      text: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
-      textEs: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
+      text: "Inside the office, Mestre Mago Kashew was seated behind the principal's desk. He rose slowly. 'Caju, I wanted to congratulate you on your victory. You showed great courage, determination, and talent. You've reached a point in life where you can help me.' Caju was speechless for a moment.",
+      textEs: "Dentro de la oficina, el Mestre Mago Kashew estaba sentado detrás del escritorio del director. Se levantó despacio. 'Caju, quería felicitarte por tu victoria. Mostraste mucho coraje, determinación y talento. Has llegado a un punto de la vida en que puedes ayudarme.' Caju se quedó sin palabras un momento.",
       textPtBR: "Entrando na sala, Juca viu o Mestre Mago Kashew sentado atrás da mesa do diretor, ele se levantou e disse 'Juca, eu queria te parabenizar pela sua vitória na Maratona, você mostrou muita coragem, determinação e talento, você enfim chegou em uma fase da vida em que pode me ajudar!' Juca ficou sem palavras por um segundo, mas conseguiu agradecer, ficou curioso e com um certo receio sobre esse pedido.",
       emoji: '😔',
       choices: [
              {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+          id: '34a',
+          text: 'Continuar',
+          textEs: 'Continuar',
           textPtBR: 'Sente-se, irei te contar o que você precisa saber por enquanto.',
-          nextPage: 29,
+          nextPage: 35,
         }
       ],
     },
 
         {
       pageNumber: 35,
-      text: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
-      textEs: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
+      text: "Mestre Mago Kashew leaned forward. 'Caju, the world is heading in a very dangerous direction. So many wars, hunger, fear and hatred — things that aren't normal. Someone is bending the paths of stories. And my heart tells me you have a part to play. A spark of magic lives in you.'",
+      textEs: "El Mestre Mago Kashew se inclinó hacia adelante. 'Caju, el mundo está tomando un camino muy peligroso. Tantas guerras, hambre, miedo y odio — cosas que no son normales. Alguien está torciendo los caminos de las historias. Y mi corazón me dice que tú tienes un papel que cumplir. Hay una chispa de magia en ti.'",
       textPtBR: "Então Mestre Mago Kashew começou a falar, 'Juca, o mundo esta tomando um caminho muito perigoso, não é normal existirem tantas guerras, fome, medo e ódio, alguem está alterando os rumos das histórias, e meu coração diz que você tem um papel importante, que você tem um toque da magia e isso será capaz de te tornar um grande herói!'",
       emoji: '😔',
       choices: [
              {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+          id: '35a',
+          text: 'Continuar',
+          textEs: 'Continuar',
           textPtBR: 'Juca fica com os olhos arregalados, e diz \'Meu Deus será que serei super poderoso?! AAA QUE SONHO!\'',
-          nextPage: 29,
+          nextPage: 36,
         }
       ],
     },
 
            {
       pageNumber: 36,
-      text: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
-      textEs: "Caju enfiou a mão na mochila. Nada. Só os pincéis genéricos da mesa, iguais aos de todos. Ele fechou os olhos por um segundo. Tinha esquecido. Escolheu o melhor dos disponíveis, misturou as cores na paleta como a Isabela tinha dito, e a ideia que apareceu na cabeça era boa, talvez até ótima. Mas na hora de executar, a falta do Pincel especial apareceu em cada traço. O Mestre Mago Kashew parou em frente ao trabalho de Caju, assentiu devagar e disse com calma: 'Boa ideia. Da próxima vez, traga suas ferramentas.'",
+      text: "Mestre Mago Kashew continued: 'You will enter many moments in history and make the right choices. If you are truly who I believe you to be, you will bring peace to the world and we will live the story we've always dreamed of. Are you ready?'",
+      textEs: "El Mestre Mago Kashew continuó: 'Tendrás que entrar en muchos momentos de la historia y tomar las decisiones correctas. Si eres realmente quien creo que eres, traerás la paz al mundo y viviremos la historia que siempre soñamos. ¿Estás listo?'",
       textPtBR: "Então Mestre Mago Kashew continuou: Você terá que entrar em vários momentos da historia, e em cada um deles, terá que tomar as decisões certas, pois se você é realmente quem eu imagino que seja, irá trazer a paz para o Mundo, e viveremos a história que sempre sonhamos! Você está pronto para isso?!",
       emoji: '😔',
+      isEnding: true,
       choices: [
-             {
-          id: '28a',
-          text: 'Tirar o Pincel especial da mochila',
-          textEs: 'Tirar o Pincel especial da mochila',
+        {
+          id: '36a',
+          text: 'Sim! Vamos nessa!',
+          textEs: 'Sim! Vamos nessa!',
           textPtBR: 'Sim! Vamos nessa!',
-          nextPage: 29,
+          nextPage: 36,
         }
+      ],
+    },
+
+    // =========================================================================
+    // PÁGINAS NOVAS (37–44)
+    // Expansão de diálogos e momentos emocionais ao longo de toda a história
+    // =========================================================================
+
+    // ─── P37: A Foto do Avô (FULL track — entre P2 e P5) ────────────────────
+    {
+      pageNumber: 37,
+      text: "Caju was about to zip up his backpack when the Special Brush slipped slightly from its cloth. He caught it carefully — and that's when he noticed something stuck to the inside of the bag's lid: a small photo. Him and Grandpa on the porch, both holding brushes, both covered in paint. Grandpa was laughing with his whole face. Caju stared at it for a moment. 'Today I'm representing us, Grandpa,' he whispered. He wrapped the brush back up and closed the bag with a different kind of certainty.",
+      textEs: "Caju estaba a punto de cerrar la mochila cuando el Pincel Especial se escapó un poco de su tela. Lo atrapó con cuidado — y fue entonces que notó algo pegado en la tapa interior: una foto pequeña. Él y el abuelo en el porche, los dos con pinceles, los dos manchados de pintura. El abuelo reía con toda la cara. Caju lo miró un momento. 'Hoy te represento, abuelo', susurró. Envolvió el pincel de nuevo y cerró la mochila con una firmeza diferente.",
+      textPtBR: "Caju estava prestes a fechar a mochila quando o Pincel Especial escorregou levinho do pano. Ele pegou com cuidado — e foi aí que notou algo colado na tampa interna da mochila: uma foto pequena. Ele e o vô na varanda, os dois com pincéis, os dois manchados de tinta. O vô ria com o rosto todo. Caju ficou olhando por um segundo. Sentiu um calorzinho no peito. 'Hoje eu te represento, vô', murmurou. Embrulhou o pincel de volta e fechou a mochila com uma firmeza diferente.",
+      emoji: '📸',
+      choices: [
+        {
+          id: '37a',
+          text: 'Go have breakfast',
+          textEs: 'Ir a desayunar',
+          textPtBR: 'Ir tomar o café da manhã',
+          nextPage: 5,
+        },
+      ],
+    },
+
+    // ─── P38: As Regras do Jogo (abertura da Maratona — entre P11 e P12) ────
+    {
+      pageNumber: 38,
+      text: "Professor Almeida raised the megaphone again. 'Attention! Each stage is worth points. Chess — 30 points for a win. Physical activity — time and technique, another 30. Arts — creativity and execution judged by Master Mage Kashew himself — 40 points.' The crowd roared. 'The overall champion goes on the school Honor Wall AND gets a private meeting with Master Mage Kashew!' Caju's jaw dropped. He hadn't known that was on the line. His heart picked up speed.",
+      textEs: "El Profesor Almeida volvió a levantar el megáfono. '¡Atención! Cada etapa vale puntos. Ajedrez — 30 puntos por ganar. Actividad física — tiempo y técnica, otros 30. Artes — creatividad y ejecución juzgadas por el Mestre Mago Kashew en persona — 40 puntos.' La multitud rugió. '¡El campeón general irá al Muro de Honor de la escuela Y tendrá una reunión privada con el Mestre Mago Kashew!' La mandíbula de Caju se descolgó. No sabía que eso estaba en juego.",
+      textPtBR: "O Professor Almeida ergueu o megafone de novo. 'Atenção! Cada etapa vale pontos. Xadrez — 30 pontos por vitória. Atividade física — tempo e técnica, mais 30. Artes — criatividade e execução julgadas pelo próprio Mestre Mago Kashew — 40 pontos.' A galera pirou. 'O campeão geral vai pro Mural de Honra da escola E ganha um encontro privado com o Mestre Mago Kashew!' Caju ficou de boca aberta. Não sabia que isso estava em jogo. O coração disparou.",
+      emoji: '📢',
+      choices: [
+        {
+          id: '38a',
+          text: "Let's go — Chess first!",
+          textEs: '¡Vamos — primero Ajedrez!',
+          textPtBR: 'Bora! Primeiro desafio: XADREZ!',
+          nextPage: 12,
+        },
+      ],
+    },
+
+    // ─── P39: A Pressão do Centro (meio da partida — entre P14 e P15) ───────
+    {
+      pageNumber: 39,
+      text: "Eight moves in, the board was balanced. Rodrigo was good — really good. His two Bishops were developed and he was building pressure down the center column. Caju recognized the strategy: control the center, then attack the king's side. 'If I let him advance one more move, this gets very hard to defend,' Caju thought. 'But if I act now, I risk losing material.' The clock ticked on. Every other board in the room had already finished. It was just the two of them.",
+      textEs: "Ocho movimientos después, el tablero estaba equilibrado. Rodrigo era bueno — muy bueno. Sus dos Alfiles estaban desarrollados y ejercía presión en la columna central. Caju reconoció la estrategia: controlar el centro y luego atacar. 'Si lo dejo avanzar un movimiento más, esto se pone muy difícil de defender', pensó Caju. 'Pero si actúo ahora, arriesgo perder material.' El reloj corría. Todos los demás tableros ya habían terminado. Solo eran ellos dos.",
+      textPtBR: "Oito lances depois, o tabuleiro estava equilibrado. Rodrigo era bom — muito bom. Os dois Bispos dele estavam desenvolvidos e ele aplicava pressão na coluna central, construindo um domínio lento. Caju reconheceu a estratégia: controlar o centro e depois atacar o lado do rei. 'Se eu deixar ele avançar mais um lance, fica muito difícil de defender', pensou Caju. 'Mas se eu agir agora, arrisco perder material.' O relógio corria. Todos os outros tabuleiros da sala já tinham acabado. Era só os dois.",
+      emoji: '🧠',
+      choices: [
+        {
+          id: '39a',
+          text: 'The decisive moment arrives...',
+          textEs: 'Llega el momento decisivo...',
+          textPtBR: 'O momento decisivo chegou...',
+          nextPage: 15,
+        },
+      ],
+    },
+
+    // ─── P40: O Aperto de Mão da Vitória (após P16 — antes da ativ. física) ──
+    {
+      pageNumber: 40,
+      text: "Rodrigo stared at the board for a few more seconds. Then he looked up and smiled sideways. 'That was a good trap. I didn't see the fork coming.' They shook hands with respect. Outside the room, Estrela exploded: 'I KNEW IT! THE KNIGHT! I TOLD YOU ABOUT THE KNIGHT!' Beto laughed and nudged her. Isabela just smiled quietly, like she'd always known. Caju took a deep breath. Thirty points in the bank. But the Marathon had barely started.",
+      textEs: "Rodrigo miró el tablero unos segundos más. Luego levantó la cabeza y sonrió de lado. 'Fue una buena trampa. No vi venir el tenedor.' Se dieron la mano con respeto. Afuera, Estrela explotó: '¡LO SABÍA! ¡EL CABALLO! ¡TE HABLÉ DEL CABALLO!' Beto rio y la empujó suavemente. Isabela solo sonrió en silencio, como si siempre lo hubiera sabido. Caju respiró hondo. Treinta puntos en el bolsillo. Pero la Maratón apenas había comenzado.",
+      textPtBR: "Rodrigo ficou olhando pro tabuleiro por mais alguns segundos. Depois levantou a cabeça e sorriu de lado. 'Foi uma boa armadilha. Não vi o garfo chegando.' Deram as mãos com respeito. Lá fora, Estrela explodiu: 'EU SABIA! O CAVALO! EU FALEI DO CAVALO!' Beto riu e empurrou ela de leve. Isabela só sorriu quieta, como quem sabia desde o começo. Caju respirou fundo. Trinta pontos no bolso. A Maratona mal tinha começado.",
+      emoji: '🤝',
+      choices: [
+        {
+          id: '40a',
+          text: 'Next up: physical activity!',
+          textEs: '¡Siguiente: actividad física!',
+          textPtBR: 'Próxima etapa: atividade física!',
+          nextPage: 18,
+        },
+      ],
+    },
+
+    // ─── P41: Processando a Derrota (após P17 — antes da ativ. física) ───────
+    {
+      pageNumber: 41,
+      text: "Rodrigo extended his hand. Caju shook it. 'Good game.' Short, but not bitter. Outside, Estrela was waiting and saw Caju's face. No words needed. 'The Knight...' she started. 'I know,' he cut in — not sharply, just quietly. Beto put a hand on his shoulder: 'You still have physical and arts. This isn't over.' Caju nodded. Zero from chess. But his mind was already on the next challenge.",
+      textEs: "Rodrigo extendió la mano. Caju se la estrechó. 'Buen juego.' Corto, pero sin amargura. Afuera, Estrela esperaba y vio la cara de Caju. No hacían falta palabras. 'El Caballo...' empezó. 'Ya sé', la cortó — sin brusquedad, solo en voz baja. Beto puso una mano en su hombro: 'Todavía tienes física y artes. Esto no terminó.' Caju asintió. Cero del ajedrez. Pero su mente ya estaba en el siguiente desafío.",
+      textPtBR: "Rodrigo estendeu a mão. Caju apertou. 'Boa partida.' Seco, mas sem raiva. Lá fora, Estrela estava esperando e viu o rosto de Caju. Não precisou de palavras. 'O Cavalo...' ela começou. 'Eu sei', ele cortou, sem rispidez, só quieto. Beto colocou a mão no ombro: 'Ainda tem física e artes. Não acabou.' Caju assentiu. Zero no xadrez. Mas a cabeça já estava no próximo desafio.",
+      emoji: '💪',
+      choices: [
+        {
+          id: '41a',
+          text: 'Next up: physical activity!',
+          textEs: '¡Siguiente: actividad física!',
+          textPtBR: 'Próxima etapa: atividade física!',
+          nextPage: 18,
+        },
+      ],
+    },
+
+    // ─── P42: O Adversário do Judô (entre P22 e P23) ─────────────────────────
+    {
+      pageNumber: 42,
+      text: "At the center of the mat, Caju finally saw his opponent up close: Guilherme from sixth grade. A full head taller, broad shoulders, yellow belt. Guilherme wasn't nervous at all — he stood with his arms crossed, staring calmly at the mat. Beto appeared behind Caju and whispered: 'Raw strength won't work against him. You need a cool head.' Caju adjusted his kimono. The judo instructor raised his hand. They faced each other on the mat.",
+      textEs: "En el centro del tatami, Caju vio a su adversario de cerca por primera vez: Guilherme, del sexto grado. Una cabeza más alto, hombros anchos, cinturón amarillo. Guilherme no estaba nervioso — estaba parado con los brazos cruzados, mirando el tatami con total calma. Beto apareció detrás de Caju y susurró: 'La fuerza bruta no va a funcionar contra él. Necesitas la cabeza fría.' Caju acomodó su kimono. El instructor de judo levantó la mano. Se miraron en el tatami.",
+      textPtBR: "No centro do tatame, Caju viu seu adversário de perto pela primeira vez: Guilherme, da turma do sexto ano. Um palmo mais alto, ombros largos, cinturão amarelo. Guilherme não estava nervoso — parado de braços cruzados, olhando pro tatame com calma total. Beto apareceu atrás de Caju e sussurrou: 'Força bruta não vai funcionar contra ele. Você precisa de cabeça fria.' Caju ajeitou o kimono. O professor de judô ergueu a mão. Eles se encararam.",
+      emoji: '🥋',
+      choices: [
+        {
+          id: '42a',
+          text: 'Face the opponent!',
+          textEs: '¡Enfrentar al adversario!',
+          textPtBR: 'Encarar o adversário de frente!',
+          nextPage: 23,
+        },
+      ],
+    },
+
+    // ─── P43: A Primeira Pincelada (entre P26 e P28 — FULL track artes) ──────
+    {
+      pageNumber: 43,
+      text: "Caju unwrapped the Special Brush and held it for a moment — the same one packed so carefully that morning. He opened the paint jars: red, blue, yellow, black, white. Mixed on the palette the way Isabela had taught him: orange first, a warm blend of red and yellow. Then a deep blue, almost the colour of night. The blank canvas was a little intimidating. 'How do I paint a whole day on one canvas?' he thought. He closed his eyes for a second. He saw the 7am alarm. The packed backpack. The chessboard. The judo mat. Then he opened his eyes and began. No more fear.",
+      textEs: "Caju desenvolvió el Pincel Especial y lo sostuvo un momento — el mismo que había empacado con tanto cuidado esa mañana. Abrió los frascos de pintura: rojo, azul, amarillo, negro, blanco. Mezcló en la paleta como Isabela le había enseñado: primero el naranja, una mezcla cálida de rojo y amarillo. Luego un azul profundo, casi color noche. El lienzo en blanco era un poco intimidante. '¿Cómo pinto todo un día en un solo lienzo?', pensó. Cerró los ojos un segundo. Vio el despertador a las 7am. La mochila preparada. El tablero. El tatami. Luego abrió los ojos y empezó. Ya no había miedo.",
+      textPtBR: "Caju desenrolou o Pincel Especial e ficou segurando por um momento — o mesmo que tinha embrulhado com tanto cuidado de manhã. Abriu os potes: vermelho, azul, amarelo, preto, branco. Misturou na paleta como a Isabela tinha ensinado: primeiro o laranja, mistura quente de vermelho com amarelo. Depois um azul profundo, quase cor de noite. A tela em branco intimidava um pouco. 'Como eu pinto um dia inteiro numa tela?', ele pensou. Fechou os olhos por um segundo. Viu o despertador às 7h. A mochila arrumada. O tabuleiro. O tatame. Aí abriu os olhos e começou. Não havia mais medo.",
+      emoji: '🖌️',
+      choices: [
+        {
+          id: '43a',
+          text: 'Paint realistically — every detail',
+          textEs: 'Pintar realisticamente — cada detalle',
+          textPtBR: 'Fazer um retrato realista com muitos detalhes incríveis.',
+          nextPage: 29,
+        },
+        {
+          id: '43b',
+          text: 'Paint from the heart — feeling over technique',
+          textEs: 'Pintar con el corazón — emoción sobre técnica',
+          textPtBR: 'Deixar o coração falar pelo pincel, arte cheia de sentimento.',
+          nextPage: 30,
+        },
+      ],
+    },
+
+    // ─── P44: A Despedida no Portão (entre P31 e P32) ────────────────────────
+    {
+      pageNumber: 44,
+      text: "At the school gate, Estrela, Beto, and Isabela were waiting. Nobody spoke for a moment. Then Estrela broke the silence: 'You were incredible today.' Beto: 'That chess fork, man.' Isabela: 'Your painting had soul.' Caju looked at each of them. The medal was in his pocket. The Special Brush, wrapped back in its cloth, was safe in his backpack. The sun was already low — late afternoon golden light. 'Thanks for believing in me before I believed in myself,' he said.",
+      textEs: "En la puerta de la escuela, Estrela, Beto e Isabela estaban esperando. Nadie habló por un momento. Luego Estrela rompió el silencio: 'Fuiste increíble hoy.' Beto: 'Ese tenedor en el ajedrez, compadre.' Isabela: 'Tu pintura tenía alma.' Caju los miró a cada uno. La medalla estaba en su bolsillo. El Pincel Especial, envuelto en su tela, estaba de vuelta en la mochila. El sol ya estaba bajo — luz dorada de tarde. 'Gracias por creer en mí antes de que yo creyera en mí mismo', dijo.",
+      textPtBR: "Na saída da escola, Estrela, Beto e Isabela estavam esperando no portão. Ninguém falou nada por um segundo. Então Estrela quebrou o silêncio: 'Você foi incrível hoje.' Beto: 'Aquele garfo no xadrez, cara.' Isabela: 'A sua pintura tinha alma.' Caju olhou pra cada um deles. A medalha estava no bolso. O Pincel Especial, embrulhado no pano, estava de volta na mochila. O sol já estava baixo — luz dourada de fim de tarde. 'Obrigado por acreditarem em mim antes de eu acreditar em mim mesmo', ele disse.",
+      emoji: '🌅',
+      choices: [
+        {
+          id: '44a',
+          text: 'Head home — but the adventure is just beginning...',
+          textEs: 'Camino a casa — pero la aventura apenas comienza...',
+          textPtBR: 'A Maratona acabou, mas a aventura está apenas começando...',
+          nextPage: 32,
+        },
       ],
     },
   ],
