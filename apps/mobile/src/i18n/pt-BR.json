@@ -99,7 +99,11 @@
       "endBadSubtitle": "Alguns caminhos levam à sombra. Tente novamente?",
       "playAgain": "Ler Novamente",
       "goHome": "Voltar ao Início",
-      "option": "Opção"
+      "option": "Opção",
+      "falseEndingTitle": "História Incompleta",
+      "falseEndingSubtitle": "Esta história ainda não chegou ao fim. Continue tentando para descobrir o desfecho!",
+      "tryAgain": "Tentar Novamente",
+      "goToMain": "Ir para a tela principal"
     }
   },
   "downloads": {

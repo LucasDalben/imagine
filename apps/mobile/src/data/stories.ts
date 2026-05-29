@@ -31,6 +31,8 @@ export interface StoryPage {
   type?: 'narrative' | 'choice';
   /** present on ending pages (choices: []) */
   isEnding?: boolean;
+  /** when true, clicking any choice/continue on this page shows the false ending screen */
+  isFakeEnding?: boolean;
 }
 
 export interface Story {
@@ -51,6 +53,8 @@ export interface Story {
   emoji: string;
   isNew?: boolean;
   isFeatured?: boolean;
+  /** When true, reaching any ending shows the "História Incompleta" screen */
+  isFalseEnding?: boolean;
   downloadSizeMB: number;
   pages: StoryPage[];
 }

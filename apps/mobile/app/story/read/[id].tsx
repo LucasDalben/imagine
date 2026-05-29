@@ -7,6 +7,7 @@ import {
   Dimensions,
   ScrollView,
   Animated,
+  ImageBackground,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Image } from 'expo-image';
@@ -33,6 +34,7 @@ export default function StoryReadScreen() {
   const [currentPageNumber, setCurrentPageNumber] = useState(startPage);
   const [endingType, setEndingType] = useState<'good' | 'bad'>('good');
   const [showEnding, setShowEnding] = useState(false);
+  const [showFalseEnding, setShowFalseEnding] = useState(false);
   const [choicesMade, setChoicesMade] = useState<string[]>([]);
 
   const fadeAnim = useRef(new Animated.Value(1)).current;
@@ -92,6 +94,17 @@ export default function StoryReadScreen() {
       : currentPage.text;
 
   const handleChoice = async (choice: StoryPage['choices'][0]) => {
+    if (currentPage.isFakeEnding) {
+      fadeTransition(() => setShowFalseEnding(true));
+      return;
+    }
+
+    if (currentPage.isEnding) {
+      const type = choice.endingType ?? 'good';
+      fadeTransition(() => { setEndingType(type); setShowEnding(true); });
+      return;
+    }
+
     const resolved = choice.conditions?.find((c) => choicesMade.includes(c.if));
     const targetPageNumber = resolved ? resolved.nextPage : choice.nextPage;
 
@@ -124,7 +137,55 @@ export default function StoryReadScreen() {
   const isEndingPage = currentPage.choices.length === 0;
   const isNarrativePage = currentPage.type === 'narrative' || currentPage.choices.length === 1;
 
-  // Ending screen
+  // False ending screen
+  if (showFalseEnding) {
+    const restartStory = () => {
+      setCurrentPageNumber(1);
+      setShowFalseEnding(false);
+      setChoicesMade([]);
+      fadeAnim.setValue(1);
+    };
+    return (
+      <ImageBackground
+        source={require('@/assets/background_victory.png')}
+        style={styles.container}
+        resizeMode="cover"
+      >
+        <LinearGradient
+          colors={['rgba(10,11,16,0.45)', 'rgba(10,11,16,0.82)', 'rgba(10,11,16,0.97)']}
+          style={StyleSheet.absoluteFill}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+        />
+        <SafeAreaView style={styles.falseEndContent}>
+          <View style={styles.falseEndIconWrap}>
+            <Ionicons name="lock-closed" size={44} color={Colors.primary} />
+          </View>
+          <Text style={styles.falseEndTitle}>{t('story.read.falseEndingTitle')}</Text>
+          <Text style={styles.falseEndSubtitle}>{t('story.read.falseEndingSubtitle')}</Text>
+
+          <TouchableOpacity
+            style={styles.falseEndBtn}
+            activeOpacity={0.85}
+            onPress={restartStory}
+          >
+            <Ionicons name="refresh" size={18} color={Colors.textOnPrimary} style={{ marginRight: 8 }} />
+            <Text style={styles.falseEndBtnText}>{t('story.read.tryAgain')}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.falseEndHomeLink}
+            activeOpacity={0.7}
+            onPress={() => router.push('/(tabs)')}
+          >
+            <Text style={styles.falseEndHomeLinkText}>{t('story.read.goToMain')}</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+      </ImageBackground>
+    );
+  }
+
+  // Regular ending screen
   if (showEnding) {
     const isGood = endingType === 'good';
     return (
@@ -227,7 +288,9 @@ export default function StoryReadScreen() {
               <TouchableOpacity
                 style={styles.continueBtn}
                 activeOpacity={0.75}
-                onPress={() => setShowEnding(true)}
+                onPress={() =>
+                  currentPage.isFakeEnding ? setShowFalseEnding(true) : setShowEnding(true)
+                }
               >
                 <Text style={styles.continueBtnText}>{t('story.read.theEnd')}</Text>
               </TouchableOpacity>
@@ -397,6 +460,74 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     fontWeight: '500',
     lineHeight: 22,
+  },
+
+  falseEndContent: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: Spacing.xl,
+    paddingBottom: Spacing.xxl,
+    gap: Spacing.md,
+  },
+  falseEndIconWrap: {
+    width: 88,
+    height: 88,
+    borderRadius: 44,
+    backgroundColor: 'rgba(34,197,94,0.12)',
+    borderWidth: 1.5,
+    borderColor: 'rgba(34,197,94,0.35)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: Spacing.sm,
+  },
+  falseEndTitle: {
+    ...Typography.h1,
+    color: Colors.textPrimary,
+    textAlign: 'center',
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  falseEndSubtitle: {
+    ...Typography.body,
+    color: 'rgba(200,201,212,0.75)',
+    textAlign: 'center',
+    lineHeight: 24,
+    maxWidth: 300,
+  },
+  falseEndBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.primary,
+    borderRadius: BorderRadius.full,
+    paddingVertical: 16,
+    paddingHorizontal: Spacing.xl,
+    marginTop: Spacing.md,
+    width: '100%',
+    shadowColor: Colors.primary,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 12,
+    elevation: 6,
+  },
+  falseEndBtnText: {
+    ...Typography.button,
+    color: Colors.textOnPrimary,
+    fontWeight: '700',
+    fontSize: 16,
+  },
+  falseEndHomeLink: {
+    marginTop: Spacing.sm,
+    paddingVertical: Spacing.sm,
+    paddingHorizontal: Spacing.md,
+  },
+  falseEndHomeLinkText: {
+    ...Typography.body,
+    color: 'rgba(200,201,212,0.55)',
+    textAlign: 'center',
+    fontSize: 14,
+    textDecorationLine: 'underline',
   },
 
   endedContent: {
