@@ -23,13 +23,16 @@ export interface StoryPage {
   text: string;
   textEs: string;
   textPtBR: string;
-  backgroundImage: string;
-  emoji: string;
+  backgroundImage?: string;
+  image_url?: string;
+  emoji?: string;
   choices: StoryChoice[];
   /** 'narrative' = single tap Continue, 'choice' = 2-3 branching options */
   type?: 'narrative' | 'choice';
   /** present on ending pages (choices: []) */
   isEnding?: boolean;
+  /** when true, clicking any choice/continue on this page shows the false ending screen */
+  isFakeEnding?: boolean;
 }
 
 export interface Story {
@@ -50,6 +53,10 @@ export interface Story {
   emoji: string;
   isNew?: boolean;
   isFeatured?: boolean;
+  /** When true, reaching any ending shows the "História Incompleta" screen */
+  isFalseEnding?: boolean;
+  imageGoodFinal?: string;
+  imageFalseFinal?: string;
   downloadSizeMB: number;
   pages: StoryPage[];
 }

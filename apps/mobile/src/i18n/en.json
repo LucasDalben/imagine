@@ -99,7 +99,11 @@
       "endBadSubtitle": "Some paths lead to shadow. Try again?",
       "playAgain": "Read Again",
       "goHome": "Back to Home",
-      "option": "Option"
+      "option": "Option",
+      "falseEndingTitle": "Incomplete Story",
+      "falseEndingSubtitle": "This story hasn't reached its true ending yet. Keep trying to uncover the real conclusion!",
+      "tryAgain": "Try Again",
+      "goToMain": "Go to main screen"
     }
   },
   "downloads": {
