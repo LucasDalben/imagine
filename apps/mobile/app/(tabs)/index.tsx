@@ -260,8 +260,8 @@ const styles = StyleSheet.create({
     paddingTop: Spacing.md,
     paddingBottom: Spacing.sm,
   },
-  greeting: { ...Typography.h3, marginBottom: 2 },
-  headerSubtitle: { ...Typography.bodySmall },
+  greeting: { ...Typography.h3, marginBottom: 2, color: '#000', fontSize: 24 },
+  headerSubtitle: { ...Typography.bodySmall, color: '#000', fontSize: 16 },
   avatarBtn: {
     width: 46,
     height: 46,

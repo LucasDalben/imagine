@@ -55,6 +55,8 @@ export interface Story {
   isFeatured?: boolean;
   /** When true, reaching any ending shows the "História Incompleta" screen */
   isFalseEnding?: boolean;
+  imageGoodFinal?: string;
+  imageFalseFinal?: string;
   downloadSizeMB: number;
   pages: StoryPage[];
 }

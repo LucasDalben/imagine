@@ -48,6 +48,8 @@ const story = {
   is_new: true,
   is_featured: true,
   download_size_mb: 0,
+  image_good_final: 'https://zqrgrvfjpqnjrqztatrk.supabase.co/storage/v1/object/public/stories/o-grande-dia-do-caju/caju_page_image_final.webp',
+  image_false_final: 'https://zqrgrvfjpqnjrqztatrk.supabase.co/storage/v1/object/public/stories/o-grande-dia-do-caju/caju_page_image_false_final.webp',
   pages: [
     // =========================================================================
     // INTERMEDIATE PAGES (1–14)  —  Morning phase → School arrival → Marathon

@@ -8,6 +8,7 @@
     "build:api": "pnpm --dir apps/api build",
     "seed:papu": "ts-node scripts/seed-papu-story.ts",
     "seed:caju": "ts-node scripts/seed-caju-story.ts",
+    "migrate:004": "ts-node scripts/migrate-004.ts",
     "upload:caju": "ts-node scripts/upload-caju-images.ts"
   },
   "keywords": [],

@@ -30,6 +30,8 @@ interface StoryRow {
   is_new: boolean;
   is_featured: boolean;
   is_false_ending: boolean;
+  image_good_final: string | null;
+  image_false_final: string | null;
   download_size_mb: number;
   pages: StoryPage[];
 }
@@ -102,6 +104,8 @@ function mapStory(row: StoryRow): Story {
     isNew: row.is_new,
     isFeatured: row.is_featured,
     isFalseEnding: row.is_false_ending,
+    imageGoodFinal: row.image_good_final ?? undefined,
+    imageFalseFinal: row.image_false_final ?? undefined,
     downloadSizeMB: row.download_size_mb,
     pages: (row.pages ?? []).sort((a, b) => a.pageNumber - b.pageNumber),
   };

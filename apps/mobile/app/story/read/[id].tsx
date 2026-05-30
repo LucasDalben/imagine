@@ -20,8 +20,10 @@ import { type StoryPage, type Story } from '@/data/stories';
 import { fetchStoryById } from '@/services/storiesService';
 import { useReadingStore } from '@/stores/readingStore';
 
-const { height } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 const IMAGE_HEIGHT = height * 0.5;
+const ENDING_IMAGE_HEIGHT = height * 0.4;
+const ENDING_IMAGE_WIDTH = width * 0.9;
 
 export default function StoryReadScreen() {
   const { id, page: pageParam } = useLocalSearchParams<{ id: string; page: string }>();
@@ -158,9 +160,19 @@ export default function StoryReadScreen() {
           end={{ x: 0, y: 1 }}
         />
         <SafeAreaView style={styles.falseEndContent}>
-          <View style={styles.falseEndIconWrap}>
-            <Ionicons name="lock-closed" size={44} color={Colors.primary} />
-          </View>
+          {story.imageFalseFinal ? (
+            <Image
+              source={{ uri: story.imageFalseFinal }}
+              style={styles.endingFinalImage}
+              contentFit="cover"
+              cachePolicy="memory-disk"
+              transition={300}
+            />
+          ) : (
+            <View style={styles.falseEndIconWrap}>
+              <Ionicons name="lock-closed" size={44} color={Colors.primary} />
+            </View>
+          )}
           <Text style={styles.falseEndTitle}>{t('story.read.falseEndingTitle')}</Text>
           <Text style={styles.falseEndSubtitle}>{t('story.read.falseEndingSubtitle')}</Text>
 
@@ -190,16 +202,24 @@ export default function StoryReadScreen() {
     const isGood = endingType === 'good';
     return (
       <View style={styles.container}>
-        <LinearGradient
-          colors={
-            isGood
-              ? [Colors.endingGoodFrom, Colors.endingGoodTo]
-              : [Colors.endingBadFrom, Colors.endingBadTo]
-          }
+        <Image
+          source={require('@/assets/background_victory.png')}
           style={StyleSheet.absoluteFill}
+          contentFit="cover"
+          cachePolicy="memory-disk"
+          transition={200}
         />
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0,0,0,0.55)' }]} />
         <SafeAreaView style={styles.endedContent}>
-          <Text style={styles.endedEmoji}>{isGood ? '✨' : '🌑'}</Text>
+          <View style={styles.endingImageRect}>
+            <Image
+              source={require('@/assets/caju_page_image_final.webp')}
+              style={styles.endingImageRectImg}
+              contentFit="cover"
+              cachePolicy="memory-disk"
+              transition={300}
+            />
+          </View>
           <Text style={styles.endedTitle}>
             {isGood ? t('story.read.endGoodTitle') : t('story.read.endBadTitle')}
           </Text>
@@ -536,6 +556,23 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: Spacing.xl,
     gap: Spacing.md,
+  },
+  endingFinalImage: {
+    width: ENDING_IMAGE_WIDTH,
+    height: ENDING_IMAGE_HEIGHT,
+    borderRadius: BorderRadius.lg,
+    overflow: 'hidden',
+  },
+  endingImageRect: {
+    width: ENDING_IMAGE_WIDTH,
+    height: ENDING_IMAGE_HEIGHT,
+    borderRadius: BorderRadius.lg,
+    overflow: 'hidden',
+    marginBottom: Spacing.sm,
+  },
+  endingImageRectImg: {
+    width: '100%',
+    height: '100%',
   },
   endedEmoji: { fontSize: 96, marginBottom: Spacing.md },
   endedTitle: { ...Typography.h2, textAlign: 'center', color: Colors.textPrimary },

@@ -93,17 +93,17 @@
       "choose": "O que você faz?",
       "continue": "Continuar",
       "theEnd": "A história termina",
-      "endGoodTitle": "Um final extraordinário!",
-      "endGoodSubtitle": "Suas escolhas moldaram essa história.",
-      "endBadTitle": "A história decidiu por você...",
-      "endBadSubtitle": "Alguns caminhos levam à sombra. Tente novamente?",
+      "endGoodTitle": "História Concluída!",
+      "endGoodSubtitle": "Você conseguiu conquistar o final verdadeiro para esse capítulo. Parabéns!",
+      "endBadTitle": "Não é esse o final que o Mago Kashew esperava...",
+      "endBadSubtitle": "Alguns caminhos levam a um futuro incerto. Quer tentar novamente?",
       "playAgain": "Ler Novamente",
-      "goHome": "Voltar ao Início",
+      "goHome": "Menu Principal",
       "option": "Opção",
       "falseEndingTitle": "História Incompleta",
       "falseEndingSubtitle": "Esta história ainda não chegou ao fim. Continue tentando para descobrir o desfecho!",
       "tryAgain": "Tentar Novamente",
-      "goToMain": "Ir para a tela principal"
+      "goToMain": "Menu Principal"
     }
   },
   "downloads": {
